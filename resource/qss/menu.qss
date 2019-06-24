@@ -1,0 +1,32 @@
+MainWindow {
+    background: rgb(55, 63, 74);
+}
+QListWidget {
+    outline: 0px;
+}
+
+QListWidget {
+    color: white;
+    font: Helvetica;
+    background: rgb(86, 95, 110);
+}
+QListWidget::Item {
+    border:2px solid rgb(55, 63, 74);
+    margin-bottom: 0px;
+    border-left-width: 0px;
+    border-top-width: 0px;
+}
+
+QListWidget::Item:selected {
+    color: black;
+    background: white;
+    border:2px solid rgb(55, 63, 74);
+    border-bottom-width: 0px;
+    border-left-width: 0px;
+    border-top-width: 0px;
+    margin-bottom: 0px;
+}
+
+
+
+

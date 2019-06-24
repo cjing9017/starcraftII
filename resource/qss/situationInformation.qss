@@ -1,0 +1,56 @@
+QFrame {
+   background-color: white;
+}
+
+QPushButton {
+    width: 30px;
+    height: 30px;
+}
+
+QPushButton#consumption {
+    border-image: url('../resource/drawable/consumption.png');
+}
+
+QPushButton#consumption:hover {
+    border-image: url('../resource/drawable/consumption_hover.png');
+}
+
+QPushButton#consumption:pressed {
+    border-image: url('../resource/drawable/consumption_down.png');
+}
+
+QPushButton#resource {
+    border-image: url('../resource/drawable/resource.png');
+}
+
+QPushButton#resource:hover {
+    border-image: url('../resource/drawable/resource_hover.png');
+}
+
+QPushButton#resource:pressed {
+    border-image: url('../resource/drawable/resource_down.png');
+}
+
+QPushButton#score {
+    border-image: url('../resource/drawable/score.png');
+}
+
+QPushButton#score:hover {
+    border-image: url('../resource/drawable/score_hover.png');
+}
+
+QPushButton#score:pressed {
+    border-image: url('../resource/drawable/score_down.png');
+}
+
+QPushButton#output {
+    border-image: url('../resource/drawable/output.png');
+}
+
+QPushButton#output:hover {
+    border-image: url('../resource/drawable/output_hover.png');
+}
+
+QPushButton#output:pressed {
+    border-image: url('../resource/drawable/output_down.png');
+}

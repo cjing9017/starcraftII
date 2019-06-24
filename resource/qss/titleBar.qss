@@ -1,0 +1,26 @@
+TitleBar {
+    background-color: rgb(78, 87, 100);
+}
+
+#buttonMinimum,#buttonMaximum,#buttonClose {
+    border: none;
+    background-color: rgb(78, 87, 100);
+}
+
+#buttonMinimum:hover,#buttonMaximum:hover {
+    background-color: rgb(78, 87, 100);
+    color: white;
+}
+
+#buttonClose:hover {
+    color: white;
+}
+
+#buttonMinimum:pressed,#buttonMaximum:pressed {
+    background-color: Firebrick;
+}
+
+#buttonClose:pressed {
+    color: white;
+    background-color: Firebrick;
+}

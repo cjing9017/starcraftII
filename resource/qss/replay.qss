@@ -1,0 +1,21 @@
+QFrame {
+   background-color: white;
+}
+
+QPushButton {
+    width: 30px;
+    height: 30px;
+}
+
+QPushButton#replay {
+    border-image: url('../resource/drawable/replay.png');
+}
+
+QPushButton#replay:hover {
+
+    border-image: url('../resource/drawable/replay_hover.png');
+}
+
+QPushButton#replay:pressed {
+    border-image: url('../resource/drawable/replay_down.png');
+}

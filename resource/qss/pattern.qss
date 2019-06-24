@@ -1,0 +1,8 @@
+QFrame {
+   background-color: white;
+}
+
+QRadioButton {
+    width: 150px;
+    height: 50px;
+}

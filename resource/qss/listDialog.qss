@@ -1,0 +1,13 @@
+QListWidget {
+    outline: 0px;
+}
+
+QListWidget {
+    color: Black;
+    background: rgb(55, 63, 74);
+}
+
+QListWidget::Item:selected {
+    color: black;
+    background: white;
+}

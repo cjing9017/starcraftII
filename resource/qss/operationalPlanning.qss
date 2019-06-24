@@ -1,0 +1,69 @@
+QFrame {
+   background-color: white;
+}
+
+QPushButton {
+    width: 30px;
+    height: 30px;
+}
+
+QPushButton#start {
+    border-image: url('../resource/drawable/start.png');
+}
+
+QPushButton#start:hover {
+    border-image: url('../resource/drawable/start_hover.png');
+}
+
+QPushButton#start:pressed {
+    border-image: url('../resource/drawable/start_down.png');
+}
+
+QPushButton#pause {
+    border-image: url('../resource/drawable/pause.png');
+}
+
+QPushButton#pause:hover {
+    border-image: url('../resource/drawable/pause_hover.png');
+}
+
+QPushButton#pause:pressed {
+    border-image: url('../resource/drawable/pause_down.png');
+}
+
+QPushButton#stop {
+    border-image: url('../resource/drawable/stop.png');
+}
+
+QPushButton#stop:hover {
+    border-image: url('../resource/drawable/stop_hover.png');
+}
+
+QPushButton#stop:pressed {
+    border-image: url('../resource/drawable/stop_down.png');
+}
+
+QPushButton#switch {
+    border-image: url('../resource/drawable/switch.png');
+}
+
+QPushButton#switch:hover {
+    border-image: url('../resource/drawable/switch_hover.png');
+}
+
+QPushButton#switch:pressed {
+    border-image: url('../resource/drawable/switch_down.png');
+}
+
+QPushButton#map {
+    border-image: url('../resource/drawable/map.png');
+}
+
+QPushButton#map:hover {
+    border-image: url('../resource/drawable/map_hover.png');
+}
+
+QPushButton#map:pressed {
+    border-image: url('../resource/drawable/map_down.png');
+}
+

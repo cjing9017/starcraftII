@@ -1,0 +1,37 @@
+QFrame {
+   background-color: white;
+}
+
+QPushButton {
+    width: 30px;
+    height: 30px;
+}
+
+QPushButton#chooseMap {
+    border-image: url('../resource/drawable/map_choose.png');
+}
+
+QPushButton#chooseMap:hover {
+    border-image: url('../resource/drawable/map_choose_hover.png');
+}
+
+QPushButton#chooseMap:pressed {
+    border-image: url('../resource/drawable/map_choose_down.png');
+}
+
+QPushButton#mapDesign {
+    border-image: url('../resource/drawable/map_editing.png');
+}
+
+QPushButton#mapDesign:hover {
+    border-image: url('../resource/drawable/map_editing_hover.png');
+}
+
+QPushButton#mapDesign:pressed {
+    border-image: url('../resource/drawable/map_editing_down.png');
+}
+
+QLabel {
+    color: black;
+    font: Helvetica 48px;
+}
