@@ -1,1 +1,1 @@
-# starcraftII
+# a simulation system of starcraftII
