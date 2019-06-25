@@ -24,3 +24,10 @@ TitleBar {
     color: white;
     background-color: Firebrick;
 }
+
+QLabel#titleLabel {
+    color: white;
+    font-size:15px;
+    font-weight:bold;
+    font-family:Roman times;
+}

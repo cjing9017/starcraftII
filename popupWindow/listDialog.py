@@ -9,7 +9,7 @@ from PyQt5.QtWidgets import QLabel
 from PyQt5.QtWidgets import QVBoxLayout, QHBoxLayout
 from PyQt5.QtCore import Qt, QSize
 from PyQt5.QtWidgets import QSizePolicy
-from PyQt5.QtWidgets import QListWidget, QStackedWidget, QListWidgetItem
+from PyQt5.QtWidgets import QListWidget, QStackedWidget, QListWidgetItem, QDesktopWidget
 from PyQt5.Qt import QFont
 
 from util.getQssFile import GetQssFile
@@ -25,7 +25,6 @@ from popupWindow.tabItem.map2 import Map2
 from popupWindow.tabItem.map3 import Map3
 
 
-
 class ListDialog(object):
     def __init__(self, list_str, list_item, title):
         super(ListDialog, self).__init__()
@@ -34,6 +33,7 @@ class ListDialog(object):
         self.tab_layout = None
         self.tab_widget = None
         self.item_widget = None
+
         # use to create a listWidget
         self.list_str = list_str
         self.list_item = list_item
@@ -45,6 +45,9 @@ class ListDialog(object):
         Dialog.setWindowTitle(self.title)
         Dialog.setStyleSheet(GetQssFile.readQss('../resource/qss/listDialog.qss'))
         self.main_layout = QVBoxLayout(Dialog)
+
+        self.frame = QFrame(Dialog)
+        self.frame.setGeometry(Dialog.geometry())
 
         self.tab_layout = QHBoxLayout(spacing=0)
         self.tab_layout.setContentsMargins(0, 0, 0, 0)

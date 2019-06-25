@@ -36,7 +36,8 @@ class TitleBar(QWidget):
         self.iconLabel = QLabel(self)
         layout.addWidget(self.iconLabel)
         self.titleLabel = QLabel(self)
-        self.titleLabel.setMargin(2)
+        self.titleLabel.setObjectName('titleLabel')
+        self.titleLabel.setMargin(5)
         layout.addWidget(self.titleLabel)
         layout.addSpacerItem(QSpacerItem(
             40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum))

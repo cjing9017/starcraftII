@@ -3,11 +3,15 @@ QListWidget {
 }
 
 QListWidget {
-    color: Black;
+    color: white;
     background: rgb(55, 63, 74);
 }
 
 QListWidget::Item:selected {
     color: black;
     background: white;
+}
+
+QFrame {
+   background-color: rgb(55, 63, 74);
 }
