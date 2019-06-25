@@ -3,5 +3,9 @@ QFrame {
 }
 
 QTextEdit {
-    background-color: white;
+    background-color: rgb(78, 87, 100);
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: Roman times;
 }
