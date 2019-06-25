@@ -6,10 +6,9 @@
 from PyQt5 import QtCore, QtWidgets
 from PyQt5.QtWidgets import QFrame
 from PyQt5.QtWidgets import QLabel
-from PyQt5.QtWidgets import QVBoxLayout, QHBoxLayout
+from PyQt5.QtWidgets import QVBoxLayout, QHBoxLayout, QPushButton, QAbstractButton
 from PyQt5.QtCore import Qt, QSize
-from PyQt5.QtWidgets import QSizePolicy
-from PyQt5.QtWidgets import QListWidget, QStackedWidget, QListWidgetItem, QDesktopWidget
+from PyQt5.QtWidgets import QListWidget, QStackedWidget, QListWidgetItem
 from PyQt5.Qt import QFont
 
 from util.getQssFile import GetQssFile
@@ -66,10 +65,12 @@ class ListDialog(object):
         self.tab_layout.setStretchFactor(self.item_widget, 4)
         self.initTab()
 
-        # the button of confirm and cancel
         self.buttonBox = QtWidgets.QDialogButtonBox()
         self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
-        self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel | QtWidgets.QDialogButtonBox.Ok)
+        self.confirm = self.buttonBox.addButton(QtWidgets.QDialogButtonBox.Ok)
+        self.confirm.setText('confirm')
+        self.cancel = self.buttonBox.addButton(QtWidgets.QDialogButtonBox.Cancel)
+        self.cancel.setText('cancel')
         self.buttonBox.setObjectName("buttonBox")
         self.main_layout.addWidget(self.buttonBox, alignment=Qt.AlignRight)
 

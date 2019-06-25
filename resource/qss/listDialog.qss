@@ -1,10 +1,14 @@
+QFrame {
+   background-color: rgb(55, 63, 74);
+}
+
 QListWidget {
     outline: 0px;
 }
 
 QListWidget {
     color: white;
-    background: rgb(55, 63, 74);
+    background: rgb(50, 85, 102);
 }
 
 QListWidget::Item:selected {
@@ -12,6 +16,13 @@ QListWidget::Item:selected {
     background: white;
 }
 
-QFrame {
-   background-color: rgb(55, 63, 74);
+QPushButton {
+    color: white;
+    background-color: rgb(50, 85, 102);
+    height: 30px;
+}
+
+QPushButton:pressed {
+    background-color: rgb(100, 180, 255);
+    border-style: inset;
 }

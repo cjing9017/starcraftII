@@ -78,6 +78,7 @@ class MainWindow(QWidget):
     def setTopLayout(self):
         # list menu
         self.list_widget = QListWidget()
+        self.list_widget.setMinimumHeight(25)
         self.list_widget.setFlow(QListWidget.LeftToRight)
         self.list_widget.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.list_widget.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
@@ -110,7 +111,7 @@ class MainWindow(QWidget):
             font = QFont()
             font.setBold(True)
             font.setWeight(50)
-            font.setPixelSize(20)
+            font.setPixelSize(17)
             # add item to menu
             item = QListWidgetItem(list_str[i], self.list_widget)
             item.setFont(font)
