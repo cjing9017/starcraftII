@@ -1,0 +1,7 @@
+QFrame {
+   background-color: rgb(55, 63, 74);
+}
+
+QLabel {
+    color: white;
+}

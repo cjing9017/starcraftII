@@ -4,9 +4,11 @@
 """
 
 from PyQt5 import QtCore
-from PyQt5.QtWidgets import QVBoxLayout
+from PyQt5.QtWidgets import QVBoxLayout, QFrame
 from PyQt5.QtWidgets import QLabel
 from PyQt5.QtCore import Qt
+
+from util.getQssFile import GetQssFile
 
 
 class ModelTrainDescriptionDialog(object):
@@ -19,6 +21,11 @@ class ModelTrainDescriptionDialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("ModelTrainDescriptionDialog")
         Dialog.resize(700, 500)
+        Dialog.setStyleSheet(GetQssFile.readQss('../resource/qss/modelTrainDescriptionDialog.qss'))
+
+        self.frame = QFrame(Dialog)
+        self.frame.setGeometry(Dialog.geometry())
+
         self.main_layout = QVBoxLayout(Dialog)
         self.mapLabel = QLabel(self.description)
         self.main_layout.addWidget(self.mapLabel, alignment=Qt.AlignCenter)
