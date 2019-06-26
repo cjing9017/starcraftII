@@ -10,6 +10,8 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from cv2 import *
 
+from util.getQssFile import GetQssFile
+
 
 class VideoBox(QWidget):
 
@@ -24,6 +26,9 @@ class VideoBox(QWidget):
 
     def __init__(self, video_url="", video_type=VIDEO_TYPE_OFFLINE, auto_play=False):
         QWidget.__init__(self)
+
+        self.setStyleSheet(GetQssFile.readQss('../resource/qss/viewBox.qss'))
+
         self.video_url = video_url
         self.video_type = video_type  # 0: offline  1: realTime
         self.auto_play = auto_play
@@ -31,7 +36,7 @@ class VideoBox(QWidget):
 
         # 组件展示
         self.pictureLabel = QLabel()
-        init_image = QPixmap('../resource/drawable/player.jpg').scaled(self.width(), self.height())
+        init_image = QPixmap('../resource/drawable/fight.jpg').scaled(self.width(), self.height())
         self.pictureLabel.setPixmap(init_image)
 
         self.playButton = QPushButton()
@@ -41,12 +46,12 @@ class VideoBox(QWidget):
 
         control_box = QHBoxLayout()
         control_box.setContentsMargins(0, 0, 0, 0)
-        control_box.addWidget(self.playButton)
+        control_box.addWidget(self.playButton, alignment=Qt.AlignLeft)
 
         layout = QVBoxLayout()
-        layout.addWidget(self.pictureLabel)
+        layout.setGeometry(self.geometry())
+        layout.addWidget(self.pictureLabel, alignment=Qt.AlignCenter)
         layout.addLayout(control_box)
-
         self.setLayout(layout)
 
         self.timer = VideoTimer()

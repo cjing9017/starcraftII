@@ -39,7 +39,7 @@ class FightView(QWidget):
         self.view = QLabel(self)
         self.view.setObjectName('view')
         self.view.setScaledContents(True)
-        self.view.setPixmap(QPixmap('../resource/drawable/fight.jpg'))
+        self.view.setPixmap(QPixmap('../resource/drawable/view.png'))
         self.main_layout.addWidget(self.view)
         self.information = QTextEdit(self)
         self.information.setObjectName('information')

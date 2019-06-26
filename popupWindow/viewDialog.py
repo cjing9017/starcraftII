@@ -4,11 +4,12 @@
 """
 
 from PyQt5 import QtCore
-from PyQt5.QtWidgets import QVBoxLayout
+from PyQt5.QtWidgets import QVBoxLayout, QFrame
 
 from resource import strings
 
 from popupWindow.videoBox import VideoBox
+from util.getQssFile import GetQssFile
 
 
 class ViewDialog(object):
@@ -21,6 +22,11 @@ class ViewDialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(700, 500)
+        Dialog.setStyleSheet(GetQssFile.readQss('../resource/qss/viewDialog.qss'))
+
+        self.frame = QFrame(Dialog)
+        self.frame.setGeometry(Dialog.geometry())
+
         self.main_layout = QVBoxLayout(Dialog)
         self.box = VideoBox('../resource/videos/testvideo.mp4')
         self.main_layout.addWidget(self.box)
