@@ -172,7 +172,7 @@ class OperationalPlanning(QWidget):
         # title name
         title = strings.OPERATIONAL_PLANNING_TITLE
         listDialog = ListDialog(list_str, list_item, title)
-        listDialog.setupUi(self.dialog)
+        listDialog.setupUi(self.dialog, self.window)
         self.window.setWidget(self.dialog)
         self.initFrameLessWindow(QSize(700, 600), 'Operational Planning', QIcon('../resource/drawable/logo.png'))
         self.window.show()

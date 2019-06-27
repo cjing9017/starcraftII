@@ -38,7 +38,7 @@ class ListDialog(object):
         self.list_item = list_item
         self.title = title
 
-    def setupUi(self, Dialog):
+    def setupUi(self, Dialog, window):
         Dialog.setObjectName("Dialog")
         Dialog.resize(700, 600)
         Dialog.setWindowTitle(self.title)
@@ -75,7 +75,9 @@ class ListDialog(object):
         self.main_layout.addWidget(self.buttonBox, alignment=Qt.AlignRight)
 
         self.buttonBox.accepted.connect(Dialog.accept)
+        self.buttonBox.accepted.connect(window.close)
         self.buttonBox.rejected.connect(Dialog.reject)
+        self.buttonBox.rejected.connect(window.close)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def initTab(self):

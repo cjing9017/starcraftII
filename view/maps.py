@@ -91,7 +91,7 @@ class Maps(QWidget):
         # title name
         title = strings.MAPS_TITLE
         listDialog = ListDialog(list_str, list_item, title)
-        listDialog.setupUi(self.dialog)
+        listDialog.setupUi(self.dialog, self.window)
         self.window.setWidget(self.dialog)
         self.initFrameLessWindow(QSize(700, 600), 'Maps', QIcon('../resource/drawable/logo.png'))
         self.window.show()
