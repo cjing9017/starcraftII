@@ -70,7 +70,7 @@ class ModelTrain(QWidget):
         model = ModelTrainDescriptionDialog(description)
         model.setupUi(self.dialog)
         self.window.setWidget(self.dialog)
-        self.initFrameLessWindow(QSize(700, 600), 'Model Train', QIcon('../resource/drawable/logo.jpg'))
+        self.initFrameLessWindow(QSize(700, 600), 'Model Train', QIcon('../resource/drawable/logo.png'))
         self.window.show()
         # self.dialog.setModal(True)
         # self.dialog.show()

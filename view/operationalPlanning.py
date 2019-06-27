@@ -155,7 +155,7 @@ class OperationalPlanning(QWidget):
         mapDialog.setupUi(self.dialog)
         self.dialog.setModal(True)
         self.window.setWidget(self.dialog)
-        self.initFrameLessWindow(QSize(700, 600), 'Operational Planning', QIcon('../resource/drawable/logo.jpg'))
+        self.initFrameLessWindow(QSize(700, 600), 'Operational Planning', QIcon('../resource/drawable/logo.png'))
         self.window.show()
         # self.dialog.show()
 
@@ -174,7 +174,7 @@ class OperationalPlanning(QWidget):
         listDialog = ListDialog(list_str, list_item, title)
         listDialog.setupUi(self.dialog)
         self.window.setWidget(self.dialog)
-        self.initFrameLessWindow(QSize(700, 600), 'Operational Planning', QIcon('../resource/drawable/logo.jpg'))
+        self.initFrameLessWindow(QSize(700, 600), 'Operational Planning', QIcon('../resource/drawable/logo.png'))
         self.window.show()
         # self.dialog.setModal(True)
         # self.dialog.show()

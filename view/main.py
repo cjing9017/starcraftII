@@ -111,7 +111,7 @@ class MainWindow(QWidget):
             font = QFont()
             font.setBold(True)
             font.setWeight(50)
-            font.setPixelSize(17)
+            font.setPixelSize(14)
             # add item to menu
             item = QListWidgetItem(list_str[i], self.list_widget)
             item.setFont(font)
@@ -129,7 +129,7 @@ def main():
     app = QApplication(sys.argv)
     main_window = FramelessWindow('title')
     main_window.setWindowTitle(strings.NAME)
-    main_window.setWindowIcon(QIcon('../resource/drawable/icon.png'))
+    main_window.setWindowIcon(QIcon('../resource/drawable/logo.png'))
     main_window.resize(QSize(1200, 700))
     main_window.setWidget(MainWindow())
     main_window.showMaximized()

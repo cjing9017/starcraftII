@@ -93,7 +93,7 @@ class Maps(QWidget):
         listDialog = ListDialog(list_str, list_item, title)
         listDialog.setupUi(self.dialog)
         self.window.setWidget(self.dialog)
-        self.initFrameLessWindow(QSize(700, 600), 'Maps', QIcon('../resource/drawable/logo.jpg'))
+        self.initFrameLessWindow(QSize(700, 600), 'Maps', QIcon('../resource/drawable/logo.png'))
         self.window.show()
         # self.dialog.setModal(True)
         # self.dialog.show()

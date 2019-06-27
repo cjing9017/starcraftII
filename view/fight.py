@@ -40,6 +40,7 @@ class FightView(QWidget):
         self.view.setObjectName('view')
         self.view.setScaledContents(True)
         self.view.setPixmap(QPixmap('../resource/drawable/view.png'))
+        self.view.setMinimumSize(600, 700)
         self.main_layout.addWidget(self.view)
         self.information = QTextEdit(self)
         self.information.setObjectName('information')
@@ -48,6 +49,7 @@ class FightView(QWidget):
         self.information.setFrameShape(QFrame.Panel)
         self.information.setFrameShadow(QFrame.Sunken)
         self.information.setLineWidth(3)
+        self.information.setMinimumSize(300, 700)
 
         # set the stretch of two widget
         self.main_layout.addWidget(self.information)

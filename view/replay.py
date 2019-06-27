@@ -6,13 +6,15 @@
 from PyQt5.QtWidgets import QWidget, QDockWidget, QDialog
 from PyQt5.QtWidgets import QHBoxLayout, QVBoxLayout, QFrame
 from PyQt5.QtWidgets import QPushButton, QLabel
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QSize
 from PyQt5.QtWidgets import QDesktopWidget
-from PyQt5.Qt import QFont
+from PyQt5.Qt import QFont, QIcon
 
 from resource import globalInformation
 from util.getQssFile import GetQssFile
 from popupWindow.viewDialog import ViewDialog
+
+from barWindow.frameLessWindow import FramelessWindow
 
 
 class Replay(QWidget):
@@ -63,8 +65,17 @@ class Replay(QWidget):
 
     def replayEvent(self):
         print('clicked replay in replay')
+        self.window = FramelessWindow('replay')
         self.replayView = QDialog()
         listDialog = ViewDialog()
         listDialog.setupUi(self.replayView)
-        self.replayView.setModal(True)
-        self.replayView.show()
+        self.window.setWidget(self.replayView)
+        self.initFrameLessWindow(QSize(700, 600), 'Replay', QIcon('../resource/drawable/logo.png'))
+        self.window.show()
+        # self.replayView.setModal(True)
+        # self.replayView.show()
+
+    def initFrameLessWindow(self, size, title, icon):
+        self.window.resize(size)
+        self.window.setWindowTitle(title)
+        self.window.setWindowIcon(icon)
