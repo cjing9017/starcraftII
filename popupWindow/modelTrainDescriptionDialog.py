@@ -20,7 +20,7 @@ class ModelTrainDescriptionDialog(object):
 
     def setupUi(self, Dialog):
         Dialog.setObjectName("ModelTrainDescriptionDialog")
-        Dialog.resize(700, 500)
+        Dialog.resize(700, 600)
         Dialog.setStyleSheet(GetQssFile.readQss('../resource/qss/modelTrainDescriptionDialog.qss'))
 
         self.frame = QFrame(Dialog)

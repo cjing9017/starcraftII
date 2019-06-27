@@ -40,7 +40,7 @@ class ListDialog(object):
 
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(700, 500)
+        Dialog.resize(700, 600)
         Dialog.setWindowTitle(self.title)
         Dialog.setStyleSheet(GetQssFile.readQss('../resource/qss/listDialog.qss'))
         self.main_layout = QVBoxLayout(Dialog)

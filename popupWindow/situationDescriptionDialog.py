@@ -20,7 +20,7 @@ class SituationDescriptionDialog(object):
 
     def setupUi(self, Dialog):
         Dialog.setObjectName("SituationDescriptionDialog")
-        Dialog.resize(700, 500)
+        Dialog.resize(700, 600)
         Dialog.setStyleSheet(GetQssFile.readQss('../resource/qss/situationDescriptionDialog.qss'))
 
         self.frame = QFrame(Dialog)

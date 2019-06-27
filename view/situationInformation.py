@@ -6,13 +6,15 @@
 from PyQt5.QtWidgets import QWidget, QDialog
 from PyQt5.QtWidgets import QHBoxLayout, QVBoxLayout, QFrame
 from PyQt5.QtWidgets import QLabel, QPushButton
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QSize
 from PyQt5.QtWidgets import QDesktopWidget
-from PyQt5.Qt import QFont
+from PyQt5.Qt import QFont, QIcon
 
 from resource import globalInformation
 from util.getQssFile import GetQssFile
 from popupWindow.situationDescriptionDialog import SituationDescriptionDialog
+
+from barWindow.frameLessWindow import FramelessWindow
 
 
 class SituationInformation(QWidget):
@@ -102,36 +104,57 @@ class SituationInformation(QWidget):
 
     def consumptionEvent(self):
         print('clicked consumption in situation infromation')
+        self.window = FramelessWindow('consumption')
         self.dialog = QDialog()
         description = "a description of consumption"
         situation = SituationDescriptionDialog(description)
         situation.setupUi(self.dialog)
-        self.dialog.setModal(True)
-        self.dialog.show()
+        self.window.setWidget(self.dialog)
+        self.initFrameLessWindow(QSize(700, 600), 'Situation Information', QIcon('../resource/drawable/logo.jpg'))
+        self.window.show()
+        # self.dialog.setModal(True)
+        # self.dialog.show()
 
     def scoreEvent(self):
         print('clicked score in situation information')
+        self.window = FramelessWindow('consumption')
         self.dialog = QDialog()
         description = "a description of score"
         situation = SituationDescriptionDialog(description)
         situation.setupUi(self.dialog)
-        self.dialog.setModal(True)
-        self.dialog.show()
+        self.window.setWidget(self.dialog)
+        self.initFrameLessWindow(QSize(700, 600), 'Situation Information', QIcon('../resource/drawable/logo.jpg'))
+        self.window.show()
+        # self.dialog.setModal(True)
+        # self.dialog.show()
 
     def resourceEvent(self):
         print('clicked resource in situation information')
+        self.window = FramelessWindow('resource')
         self.dialog = QDialog()
         description = "a description of resource"
         situation = SituationDescriptionDialog(description)
         situation.setupUi(self.dialog)
-        self.dialog.setModal(True)
-        self.dialog.show()
+        self.window.setWidget(self.dialog)
+        self.initFrameLessWindow(QSize(700, 600), 'Situation Information', QIcon('../resource/drawable/logo.jpg'))
+        self.window.show()
+        # self.dialog.setModal(True)
+        # self.dialog.show()
 
     def outputEvent(self):
         print('clicked output in situation information')
+        self.window = FramelessWindow('output')
         self.dialog = QDialog()
         description = "a description of output"
         situation = SituationDescriptionDialog(description)
         situation.setupUi(self.dialog)
-        self.dialog.setModal(True)
-        self.dialog.show()
+        self.window.setWidget(self.dialog)
+        self.initFrameLessWindow(QSize(700, 600), 'Situation Information', QIcon('../resource/drawable/logo.jpg'))
+        self.window.show()
+        # self.dialog.setModal(True)
+        # self.dialog.show()
+
+    def initFrameLessWindow(self, size, title, icon):
+        self.window.resize(size)
+        self.window.setWindowTitle(title)
+        self.window.setWindowIcon(icon)

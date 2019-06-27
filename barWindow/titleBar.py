@@ -20,13 +20,14 @@ class TitleBar(QWidget):
     windowClosed = pyqtSignal()
     windowMoved = pyqtSignal(QPoint)
 
-    def __init__(self, *args, **kwargs):
-        super(TitleBar, self).__init__(*args, **kwargs)
+    def __init__(self, dep):
+        super(TitleBar, self).__init__()
         self.setStyleSheet(GetQssFile.readQss('../resource/qss/titleBar.qss'))
         self.setAttribute(Qt.WA_StyledBackground, True)
         self.mPos = None
         self.iconSize = 40
         self.setAutoFillBackground(True)
+        self.dep = dep
         palette = self.palette()
         palette.setColor(palette.Window, QColor(240, 240, 240))
         self.setPalette(palette)
@@ -46,9 +47,10 @@ class TitleBar(QWidget):
         self.buttonMinimum = QPushButton(
             '0', self, clicked=self.windowMinimumed.emit, font=font, objectName='buttonMinimum')
         layout.addWidget(self.buttonMinimum)
-        self.buttonMaximum = QPushButton(
-            '2', self, clicked=self.showMaximized, font=font, objectName='buttonMaximum')
-        layout.addWidget(self.buttonMaximum)
+        if self.dep is 'title':
+            self.buttonMaximum = QPushButton(
+                '2', self, clicked=self.showMaximized, font=font, objectName='buttonMaximum')
+            layout.addWidget(self.buttonMaximum)
         self.buttonClose = QPushButton(
             'r', self, clicked=self.windowClosed.emit, font=font, objectName='buttonClose')
         layout.addWidget(self.buttonClose)
@@ -67,8 +69,9 @@ class TitleBar(QWidget):
         self.setMaximumHeight(height)
         self.buttonMinimum.setMinimumSize(height, height)
         self.buttonMinimum.setMaximumSize(height, height)
-        self.buttonMaximum.setMinimumSize(height, height)
-        self.buttonMaximum.setMaximumSize(height, height)
+        if self.dep is 'title':
+            self.buttonMaximum.setMinimumSize(height, height)
+            self.buttonMaximum.setMaximumSize(height, height)
         self.buttonClose.setMinimumSize(height, height)
         self.buttonClose.setMaximumSize(height, height)
 

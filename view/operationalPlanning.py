@@ -6,7 +6,7 @@
 from PyQt5.QtWidgets import QWidget, QLabel, QLCDNumber
 from PyQt5.QtWidgets import QHBoxLayout, QFrame, QPushButton, QVBoxLayout
 from PyQt5.QtWidgets import QDesktopWidget, QDialog
-from PyQt5.Qt import QIcon, QFont
+from PyQt5.Qt import QIcon, QFont, QSize
 from PyQt5.QtCore import Qt, QTimer
 
 
@@ -15,6 +15,8 @@ from util.getQssFile import GetQssFile
 from popupWindow.listDialog import ListDialog
 from popupWindow.mapDescriptionDialog import MapDescriptionDialog
 from resource import strings
+
+from barWindow.frameLessWindow import FramelessWindow
 
 import time
 
@@ -147,16 +149,21 @@ class OperationalPlanning(QWidget):
     # a description of current map
     def mapEvent(self):
         print('clicked map in operational planning')
+        self.window = FramelessWindow('map description')
         self.dialog = QDialog()
         mapDialog = MapDescriptionDialog()
         mapDialog.setupUi(self.dialog)
         self.dialog.setModal(True)
-        self.dialog.show()
+        self.window.setWidget(self.dialog)
+        self.initFrameLessWindow(QSize(700, 600), 'Operational Planning', QIcon('../resource/drawable/logo.jpg'))
+        self.window.show()
+        # self.dialog.show()
 
     # switch policy of a dialog
     # there is a description of each algorithm
     def switchEvent(self):
         print('clicked switch in operation planning')
+        self.window = FramelessWindow('switch policy')
         self.dialog = QDialog()
         # tab item name
         list_str = [strings.ALGORITHM1, strings.ALGORITHM2, strings.ALGORITHM3]
@@ -166,6 +173,13 @@ class OperationalPlanning(QWidget):
         title = strings.OPERATIONAL_PLANNING_TITLE
         listDialog = ListDialog(list_str, list_item, title)
         listDialog.setupUi(self.dialog)
-        self.dialog.setModal(True)
-        self.dialog.show()
+        self.window.setWidget(self.dialog)
+        self.initFrameLessWindow(QSize(700, 600), 'Operational Planning', QIcon('../resource/drawable/logo.jpg'))
+        self.window.show()
+        # self.dialog.setModal(True)
+        # self.dialog.show()
 
+    def initFrameLessWindow(self, size, title, icon):
+        self.window.resize(size)
+        self.window.setWindowTitle(title)
+        self.window.setWindowIcon(icon)

@@ -13,8 +13,8 @@ Left, Top, Right, Bottom, LeftTop, RightTop, LeftBottom, RightBottom = range(8)
 
 class FramelessWindow(QWidget):
 
-    def __init__(self, *args, **kwargs):
-        super(FramelessWindow, self).__init__(*args, **kwargs)
+    def __init__(self, dep):
+        super(FramelessWindow, self).__init__()
 
         self._pressed = False
         self.Direction = None
@@ -30,12 +30,16 @@ class FramelessWindow(QWidget):
         layout.setContentsMargins(
             self.Margins, self.Margins, self.Margins, self.Margins)
         # set the title bar
-        self.titleBar = TitleBar(self)
+        self.titleBar = TitleBar(dep)
         layout.addWidget(self.titleBar)
         # signal slot
-        self.titleBar.windowMinimumed.connect(self.showMinimized)
-        self.titleBar.windowMaximumed.connect(self.showMaximized)
-        self.titleBar.windowNormaled.connect(self.showNormal)
+        if dep is 'title':
+            self.titleBar.windowMaximumed.connect(self.showMaximized)
+            self.titleBar.windowMinimumed.connect(self.showMinimized)
+            self.titleBar.windowNormaled.connect(self.showNormal)
+        else:
+            self.titleBar.windowMinimumed.connect(self.showMinimized)
+            self.titleBar.windowNormaled.connect(self.showNormal)
         self.titleBar.windowClosed.connect(self.close)
         self.titleBar.windowMoved.connect(self.move)
         self.windowTitleChanged.connect(self.titleBar.setTitle)

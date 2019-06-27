@@ -127,7 +127,7 @@ class MainWindow(QWidget):
 
 def main():
     app = QApplication(sys.argv)
-    main_window = FramelessWindow()
+    main_window = FramelessWindow('title')
     main_window.setWindowTitle(strings.NAME)
     main_window.setWindowIcon(QIcon('../resource/drawable/icon.png'))
     main_window.resize(QSize(1200, 700))

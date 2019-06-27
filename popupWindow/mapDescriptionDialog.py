@@ -5,14 +5,14 @@
 
 from PyQt5 import QtCore
 from PyQt5.QtWidgets import QVBoxLayout, QFrame
-from PyQt5.QtWidgets import QLabel
+from PyQt5.QtWidgets import QLabel, QWidget
 from PyQt5.QtCore import Qt
-
+from PyQt5.Qt import QIcon
 from resource import strings
 from util.getQssFile import GetQssFile
 
 
-class MapDescriptionDialog(object):
+class MapDescriptionDialog(QWidget):
     def __init__(self):
         super(MapDescriptionDialog, self).__init__()
         self.main_layout = None
@@ -20,7 +20,7 @@ class MapDescriptionDialog(object):
 
     def setupUi(self, Dialog):
         Dialog.setObjectName("MapDescriptionDialog")
-        Dialog.resize(700, 500)
+        Dialog.resize(700, 600)
         Dialog.setStyleSheet(GetQssFile.readQss('../resource/qss/mapDescriptionDialog.qss'))
 
         self.frame = QFrame(Dialog)

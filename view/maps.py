@@ -7,8 +7,8 @@ from PyQt5.QtWidgets import QWidget, QDialog
 from PyQt5.QtWidgets import QPushButton, QLabel
 from PyQt5.QtWidgets import QHBoxLayout, QVBoxLayout, QFrame
 from PyQt5.QtWidgets import QDesktopWidget
-from PyQt5.QtCore import Qt
-from PyQt5.Qt import QFont
+from PyQt5.QtCore import Qt, QSize
+from PyQt5.Qt import QFont, QIcon
 
 import os
 
@@ -16,6 +16,8 @@ from resource import globalInformation
 from util.getQssFile import GetQssFile
 from resource import strings
 from popupWindow.listDialog import ListDialog
+
+from barWindow.frameLessWindow import FramelessWindow
 
 
 class Maps(QWidget):
@@ -80,6 +82,7 @@ class Maps(QWidget):
 
     def chooseMapEvent(self):
         print('clicked choose map in maps')
+        self.window = FramelessWindow('choose map')
         self.dialog = QDialog()
         # tab item name
         list_str = [strings.MAP1, strings.MAP2, strings.MAP3]
@@ -89,10 +92,18 @@ class Maps(QWidget):
         title = strings.MAPS_TITLE
         listDialog = ListDialog(list_str, list_item, title)
         listDialog.setupUi(self.dialog)
-        self.dialog.setModal(True)
-        self.dialog.show()
+        self.window.setWidget(self.dialog)
+        self.initFrameLessWindow(QSize(700, 600), 'Maps', QIcon('../resource/drawable/logo.jpg'))
+        self.window.show()
+        # self.dialog.setModal(True)
+        # self.dialog.show()
 
     @staticmethod
     def mapDesignEvent():
         print('clicked map design in maps')
         os.system(strings.SCMDRAFT)
+
+    def initFrameLessWindow(self, size, title, icon):
+        self.window.resize(size)
+        self.window.setWindowTitle(title)
+        self.window.setWindowIcon(icon)
