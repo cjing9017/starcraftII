@@ -19,9 +19,13 @@ from popupWindow.tabItem.algorithm2 import Algorithm2
 from popupWindow.tabItem.algorithm3 import Algorithm3
 
 # the description of map
-from popupWindow.tabItem.map1 import Map1
-from popupWindow.tabItem.map2 import Map2
-from popupWindow.tabItem.map3 import Map3
+from popupWindow.tabItem.moveToBeacon import MoveToBeacon
+from popupWindow.tabItem.collectMineralShards import CollectMineralShards
+from popupWindow.tabItem.findAndDefeatZerglings import FindAndDefeatZerglings
+from popupWindow.tabItem.buildMarines import BuildMarines
+from popupWindow.tabItem.collectMineralsAndGas import CollectMineralsAndGas
+from popupWindow.tabItem.defeatRoaches import DefeatRoaches
+from popupWindow.tabItem.defeatZerglingsAndBanelings import DefeatZerglingsAndBanelings
 
 
 class ListDialog(object):
@@ -87,8 +91,8 @@ class ListDialog(object):
             # add item to tab
             font = QFont()
             font.setBold(True)
-            font.setWeight(75)
-            font.setPixelSize(20)
+            font.setWeight(50)
+            font.setPixelSize(14)
 
             item = QListWidgetItem(self.list_str[i], self.tab_widget)
             item.setSizeHint(QSize(30, 50))

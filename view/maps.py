@@ -18,6 +18,7 @@ from resource import strings
 from popupWindow.listDialog import ListDialog
 
 from barWindow.frameLessWindow import FramelessWindow
+import subprocess
 
 
 class Maps(QWidget):
@@ -85,9 +86,25 @@ class Maps(QWidget):
         self.window = FramelessWindow('choose map')
         self.dialog = QDialog()
         # tab item name
-        list_str = [strings.MAP1, strings.MAP2, strings.MAP3]
+        list_str = [
+            strings.MAP_MOVE_TO_BEACON,
+            strings.MAP_COLLECT_MINERAL_SHARDS,
+            strings.MAP_FIND_AND_DEFEAT_ZERGLINGS,
+            strings.MAP_DEFEAT_ROACHES,
+            strings.MAP_DEFEAT_ZERGLINGS_AND_BANELINGS,
+            strings.MAP_COLLECT_MINERALS_AND_GAS,
+            strings.MAP_BUILD_MARINES
+        ]
         # item content
-        list_item = [strings.CLASS_MAP1, strings.CLASS_MAP2, strings.CLASS_MAP3]
+        list_item = [
+            strings.CLASS_MAP_MOVE_TO_BEACON,
+            strings.CLASS_MAP_COLLECT_MINERAL_SHARDS,
+            strings.CLASS_MAP_FIND_AND_DEFEAT_ZERGLINGS,
+            strings.CLASS_MAP_DEFEAT_ROACHES,
+            strings.CLASS_MAP_DEFEAT_ZERGLINGS_AND_BANELINGS,
+            strings.CLASS_MAP_COLLECT_MINERALS_AND_GAS,
+            strings.CLASS_MAP_BUILD_MARINES
+        ]
         # title name
         title = strings.MAPS_TITLE
         listDialog = ListDialog(list_str, list_item, title)
@@ -101,7 +118,8 @@ class Maps(QWidget):
     @staticmethod
     def mapDesignEvent():
         print('clicked map design in maps')
-        os.system(strings.SCMDRAFT)
+        # os.system(strings.SCMDRAFT)
+        subprocess.Popen(strings.SCMDRAFT)
 
     def initFrameLessWindow(self, size, title, icon):
         self.window.resize(size)

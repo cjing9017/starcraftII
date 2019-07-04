@@ -1,0 +1,37 @@
+<h2>FindAndDefeatZerglings</h2>
+<h4>Description</h4>
+<p>A map with 3 Marines and an endless supply of stationary Zerglings. Rewards are
+earned by using the Marines to defeat Zerglings, with the optimal strategy
+requiring a combination of efficient exploration and combat. Whenever all 25
+Zerglings have been defeated, a new set of 25 Zerglings are spawned at random
+locations (at least 9 units away from all Marines and at least 5 units away from
+all other Zerglings).</p>
+<h4>Initial State</h4>
+<ul>
+<li>3 Marines at map center (preselected)</li>
+<li>2 Zerglings spawned at random locations inside player's vision range
+    (between 7.5 and 9.5 units away from map center and at least 5 units away
+    from all other Zerglings)</li>
+<li>23 Zerglings spawned at random locations outside player's vision range (at
+    least 10.5 units away from map center and at least 5 units away from all
+    other Zerglings)</li>
+</ul>
+<h4>Rewards</h4>
+<ul>
+<li>Zergling defeated: +1</li>
+<li>Marine defeated: -1</li>
+</ul>
+<h4>End Conditions</h4>
+<ul>
+<li>Time elapsed</li>
+<li>All Marines defeated</li>
+</ul>
+<h4>Time Limit</h4>
+<ul>
+<li>180 seconds</li>
+</ul>
+<h4>Additional Notes</h4>
+<ul>
+<li>Fog of War enabled</li>
+<li>Camera movement required (map is larger than single-screen)</li>
+</ul>

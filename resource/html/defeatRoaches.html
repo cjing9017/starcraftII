@@ -1,0 +1,41 @@
+<h2>DefeatRoaches</h2>
+<h4>Description</h4>
+<p>A map with 9 Marines and a group of 4 Roaches on opposite sides. Rewards are
+earned by using the Marines to defeat Roaches, with optimal combat strategy
+requiring the Marines to perform focus fire on the Roaches. Whenever all 4
+Roaches have been defeated, a new group of 4 Roaches is spawned and the player
+is awarded 5 additional Marines at full health, with all other surviving Marines
+retaining their existing health (no restore). Whenever new units are spawned,
+all unit positions are reset to opposite sides of the map.</p>
+<h4>Initial State</h4>
+<ul>
+<li>9 Marines in a vertical line at a random side of the map (preselected)</li>
+<li>4 Roaches in a vertical line at the opposite side of the map from the
+    Marines</li>
+</ul>
+<h4>Rewards</h4>
+<ul>
+<li>Roach defeated: +10</li>
+<li>Marine defeated: -1</li>
+</ul>
+<h4>End Conditions</h4>
+<ul>
+<li>Time elapsed</li>
+<li>All Marines defeated</li>
+</ul>
+<h4>Time Limit</h4>
+<ul>
+<li>120 seconds</li>
+</ul>
+<h4>Additional Notes</h4>
+<ul>
+<li>Fog of War disabled</li>
+<li>No camera movement required (single-screen)</li>
+<li>This map and DefeatZerglingsAndBanelings are currently the only maps in the
+    set that can include an automatic, mid-episode state change for
+    player-controlled units. The Marine units are automatically moved back to a
+    neutral position (at a random side of the map opposite the Roaches) when new
+    units are spawned, which occurs whenever the current set of Roaches is
+    defeated. This is done in order to guarantee that new units do not spawn
+    within combat range of one another.</li>
+</ul>

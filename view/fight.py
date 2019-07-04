@@ -4,13 +4,17 @@
 """
 
 from PyQt5.QtWidgets import QWidget, QTextEdit, QSizePolicy
-from PyQt5.QtWidgets import QLabel, QHBoxLayout, QDesktopWidget
+from PyQt5.QtWidgets import QLabel, QHBoxLayout, QDesktopWidget, QVBoxLayout
 from PyQt5.QtWidgets import QFrame
-from PyQt5.QtGui import QPixmap
+from PyQt5.QtGui import QPixmap, QWindow
 from PyQt5.QtCore import QRect
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QTimer
 
 from util.getQssFile import GetQssFile
+import subprocess
+import win32gui
+import win32con
+import time
 
 
 class FightView(QWidget):
@@ -32,9 +36,10 @@ class FightView(QWidget):
         self.frame.setGeometry(QDesktopWidget().screenGeometry())
 
         # set main layout
-        self.main_layout = QHBoxLayout(self)
+        self.main_layout = QVBoxLayout(self)
         self.main_layout.setContentsMargins(10, 10, 10, 20)
         self.main_layout.setSpacing(10)
+
         # set widget of layout
         self.view = QLabel(self)
         self.view.setObjectName('view')
@@ -63,3 +68,7 @@ class FightView(QWidget):
 
     def initUI(self):
         pass
+
+    def checkWindow(self):
+        rect = win32gui.GetWindowRect(self.hwnd)
+        self.move(rect[2], rect[1])

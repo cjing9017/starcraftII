@@ -36,12 +36,21 @@ OPERATIONAL_PLANNING_TITLE = 'Operation Planning'
 
 # selection of maps
 SCMDRAFT = r'"F:\Game\StarCraft\StarCraft II\StarCraft II Editor.exe"'
-MAP1 = 'map1'
-MAP2 = 'map2'
-MAP3 = 'map3'
-CLASS_MAP1 = 'Map1()'
-CLASS_MAP2 = 'Map2()'
-CLASS_MAP3 = 'Map3()'
+MAP_MOVE_TO_BEACON = 'Beacon'
+MAP_COLLECT_MINERAL_SHARDS = 'MineralShards'
+MAP_FIND_AND_DEFEAT_ZERGLINGS = 'Zerglings'
+MAP_DEFEAT_ROACHES = 'Roaches'
+MAP_DEFEAT_ZERGLINGS_AND_BANELINGS = 'Banelings'
+MAP_COLLECT_MINERALS_AND_GAS = 'MineralsAndGas'
+MAP_BUILD_MARINES = 'Marines'
+
+CLASS_MAP_MOVE_TO_BEACON = 'MoveToBeacon()'
+CLASS_MAP_COLLECT_MINERAL_SHARDS = 'CollectMineralShards()'
+CLASS_MAP_FIND_AND_DEFEAT_ZERGLINGS = 'FindAndDefeatZerglings()'
+CLASS_MAP_DEFEAT_ROACHES = 'DefeatRoaches()'
+CLASS_MAP_DEFEAT_ZERGLINGS_AND_BANELINGS = 'DefeatZerglingsAndBanelings()'
+CLASS_MAP_COLLECT_MINERALS_AND_GAS = 'CollectMineralsAndGas()'
+CLASS_MAP_BUILD_MARINES = 'BuildMarines()'
 
 MAPS_TITLE = 'Maps'
 
