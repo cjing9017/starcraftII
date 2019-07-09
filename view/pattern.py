@@ -14,6 +14,12 @@ from resource import strings
 from util.getQssFile import GetQssFile
 from resource import globalInformation
 
+from view.fight import FightView
+from util.signal import Signal
+
+import logging
+from util.logs import Log
+
 
 class Pattern(QWidget):
 
@@ -21,6 +27,8 @@ class Pattern(QWidget):
         super(Pattern, self).__init__()
         self.setObjectName('Pattern')
         self.setStyleSheet(GetQssFile.readQss('../resource/qss/pattern.qss'))
+
+        self.log = logging.getLogger('StarCraftII')
 
         # set widget of layout
         self.frame = QFrame(self)
@@ -51,9 +59,15 @@ class Pattern(QWidget):
     def radioClicked(self):
         sender = self.sender()
         if sender == self.vs_group:
+            message = ""
             if self.vs_group.checkedId() == 1:
-                print("clicked human vs. machine in pattern")
+                message = "change pattern: human vs. machine"
+                # print(message)
+                self.log.info(message)
                 globalInformation.set_value('pattern', strings.HUMAN_VS_MACHINE)
             elif self.vs_group.checkedId() == 2:
-                print("clicked machine vs. machine in pattern")
+                message = "change pattern: machine vs. machine"
+                # print(message)
+                self.log.info(message)
                 globalInformation.set_value('pattern', strings.MACHINE_VS_MACHINE)
+            Signal.get_signal().emit_signal(message)

@@ -15,6 +15,10 @@ from util.getQssFile import GetQssFile
 from popupWindow.viewDialog import ViewDialog
 
 from barWindow.frameLessWindow import FramelessWindow
+from util.signal import Signal
+
+from util.logs import Log
+import logging
 
 
 class Replay(QWidget):
@@ -23,6 +27,8 @@ class Replay(QWidget):
         super(Replay, self).__init__()
         self.setObjectName('Replay')
         self.setStyleSheet(GetQssFile.readQss('../resource/qss/replay.qss'))
+
+        self.log = logging.getLogger('StarCraftII')
 
         # font
         font = QFont()
@@ -64,13 +70,19 @@ class Replay(QWidget):
             self.replayEvent()
 
     def replayEvent(self):
-        print('clicked replay in replay')
+        message = 'watch the replay'
+        self.log.info(message)
+        Signal.get_signal().emit_signal(message)
         self.window = FramelessWindow('replay')
         self.replayView = QDialog()
         listDialog = ViewDialog()
         listDialog.setupUi(self.replayView)
         self.window.setWidget(self.replayView)
-        self.initFrameLessWindow(QSize(700, 600), 'Replay', QIcon('../resource/drawable/logo.png'))
+        self.initFrameLessWindow(
+            QSize(700, 600),
+            'Replay',
+            QIcon('../resource/drawable/logo.png')
+        )
         self.window.show()
         # self.replayView.setModal(True)
         # self.replayView.show()

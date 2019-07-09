@@ -2,7 +2,7 @@ QFrame {
    background-color: rgb(55, 63, 74);
 }
 
-QTextEdit {
+QPlainTextEdit {
     background-color: rgb(78, 87, 100);
     color: white;
     font-size: 15px;

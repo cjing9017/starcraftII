@@ -15,6 +15,10 @@ from util.getQssFile import GetQssFile
 from popupWindow.situationDescriptionDialog import SituationDescriptionDialog
 
 from barWindow.frameLessWindow import FramelessWindow
+from util.signal import Signal
+
+from util.logs import Log
+import logging
 
 
 class SituationInformation(QWidget):
@@ -23,6 +27,8 @@ class SituationInformation(QWidget):
         super(SituationInformation, self).__init__()
         self.setObjectName('SituationInformation')
         self.setStyleSheet(GetQssFile.readQss('../resource/qss/situationInformation.qss'))
+
+        self.log = logging.getLogger('StarCraftII')
 
         # font
         font = QFont()
@@ -103,53 +109,77 @@ class SituationInformation(QWidget):
             self.outputEvent()
 
     def consumptionEvent(self):
-        print('clicked consumption in situation infromation')
+        message = 'situation information: consumption'
+        self.log.info(message)
+        Signal.get_signal().emit_signal(message)
         self.window = FramelessWindow('consumption')
         self.dialog = QDialog()
         description = "a description of consumption"
         situation = SituationDescriptionDialog(description)
         situation.setupUi(self.dialog)
         self.window.setWidget(self.dialog)
-        self.initFrameLessWindow(QSize(700, 600), 'Situation Information', QIcon('../resource/drawable/logo.png'))
+        self.initFrameLessWindow(
+            QSize(700, 600),
+            'Situation Information',
+            QIcon('../resource/drawable/logo.png')
+        )
         self.window.show()
         # self.dialog.setModal(True)
         # self.dialog.show()
 
     def scoreEvent(self):
-        print('clicked score in situation information')
+        message = 'situation information: score'
+        self.log.info(message)
+        Signal.get_signal().emit_signal(message)
         self.window = FramelessWindow('consumption')
         self.dialog = QDialog()
         description = "a description of score"
         situation = SituationDescriptionDialog(description)
         situation.setupUi(self.dialog)
         self.window.setWidget(self.dialog)
-        self.initFrameLessWindow(QSize(700, 600), 'Situation Information', QIcon('../resource/drawable/logo.png'))
+        self.initFrameLessWindow(
+            QSize(700, 600),
+            'Situation Information',
+            QIcon('../resource/drawable/logo.png')
+        )
         self.window.show()
         # self.dialog.setModal(True)
         # self.dialog.show()
 
     def resourceEvent(self):
-        print('clicked resource in situation information')
+        message = 'situation information: resource'
+        self.log.info(message)
+        Signal.get_signal().emit_signal(message)
         self.window = FramelessWindow('resource')
         self.dialog = QDialog()
         description = "a description of resource"
         situation = SituationDescriptionDialog(description)
         situation.setupUi(self.dialog)
         self.window.setWidget(self.dialog)
-        self.initFrameLessWindow(QSize(700, 600), 'Situation Information', QIcon('../resource/drawable/logo.png'))
+        self.initFrameLessWindow(
+            QSize(700, 600),
+            'Situation Information',
+            QIcon('../resource/drawable/logo.png')
+        )
         self.window.show()
         # self.dialog.setModal(True)
         # self.dialog.show()
 
     def outputEvent(self):
-        print('clicked output in situation information')
+        message = 'situation information: output'
+        self.log.info(message)
+        Signal.get_signal().emit_signal(message)
         self.window = FramelessWindow('output')
         self.dialog = QDialog()
         description = "a description of output"
         situation = SituationDescriptionDialog(description)
         situation.setupUi(self.dialog)
         self.window.setWidget(self.dialog)
-        self.initFrameLessWindow(QSize(700, 600), 'Situation Information', QIcon('../resource/drawable/logo.png'))
+        self.initFrameLessWindow(
+            QSize(700, 600),
+            'Situation Information',
+            QIcon('../resource/drawable/logo.png')
+        )
         self.window.show()
         # self.dialog.setModal(True)
         # self.dialog.show()

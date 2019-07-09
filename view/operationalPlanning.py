@@ -17,8 +17,11 @@ from popupWindow.mapDescriptionDialog import MapDescriptionDialog
 from resource import strings
 
 from barWindow.frameLessWindow import FramelessWindow
+from util.signal import Signal
 
 import time
+from util.logs import Log
+import logging
 
 
 class OperationalPlanning(QWidget):
@@ -27,6 +30,8 @@ class OperationalPlanning(QWidget):
         super(OperationalPlanning, self).__init__()
         self.setObjectName('OperationalPlanning')
         self.setStyleSheet(GetQssFile.readQss('../resource/qss/operationalPlanning.qss'))
+
+        self.log = logging.getLogger('StarCraftII')
 
         # font
         font = QFont()
@@ -136,33 +141,47 @@ class OperationalPlanning(QWidget):
 
     # start simulation
     def startEvent(self):
-        print('clicked start in operational planning')
+        message = 'start the simulation'
+        self.log.info(message)
+        Signal.get_signal().emit_signal(message)
 
     # pause simulation
     def pauseEvent(self):
-        print('clicked pause in operational planning')
+        message = 'pause the simulation'
+        self.log.info(message)
+        Signal.get_signal().emit_signal(message)
 
     # stop simulation
     def stopEvent(self):
-        print('clicked stop in operational planning')
+        message = 'stop the simulation'
+        self.log.info(message)
+        Signal.get_signal().emit_signal(message)
 
     # a description of current map
     def mapEvent(self):
-        print('clicked map in operational planning')
+        message = 'open the map description'
+        self.log.info(message)
+        Signal.get_signal().emit_signal(message)
         self.window = FramelessWindow('map description')
         self.dialog = QDialog()
         mapDialog = MapDescriptionDialog()
         mapDialog.setupUi(self.dialog)
         self.dialog.setModal(True)
         self.window.setWidget(self.dialog)
-        self.initFrameLessWindow(QSize(700, 600), 'Operational Planning', QIcon('../resource/drawable/logo.png'))
+        self.initFrameLessWindow(
+            QSize(700, 600),
+            'Operational Planning',
+            QIcon('../resource/drawable/logo.png')
+        )
         self.window.show()
         # self.dialog.show()
 
     # switch policy of a dialog
     # there is a description of each algorithm
     def switchEvent(self):
-        print('clicked switch in operation planning')
+        message = 'switch policy'
+        self.log.info(message)
+        Signal.get_signal().emit_signal(message)
         self.window = FramelessWindow('switch policy')
         self.dialog = QDialog()
         # tab item name
@@ -174,7 +193,11 @@ class OperationalPlanning(QWidget):
         listDialog = ListDialog(list_str, list_item, title)
         listDialog.setupUi(self.dialog, self.window)
         self.window.setWidget(self.dialog)
-        self.initFrameLessWindow(QSize(700, 600), 'Operational Planning', QIcon('../resource/drawable/logo.png'))
+        self.initFrameLessWindow(
+            QSize(700, 600),
+            'Operational Planning',
+            QIcon('../resource/drawable/logo.png')
+        )
         self.window.show()
         # self.dialog.setModal(True)
         # self.dialog.show()

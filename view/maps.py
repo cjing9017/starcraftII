@@ -18,7 +18,11 @@ from resource import strings
 from popupWindow.listDialog import ListDialog
 
 from barWindow.frameLessWindow import FramelessWindow
+from util.signal import Signal
 import subprocess
+
+from util.logs import Log
+import logging
 
 
 class Maps(QWidget):
@@ -27,6 +31,8 @@ class Maps(QWidget):
         super(Maps, self).__init__()
         self.setObjectName('Maps')
         self.setStyleSheet(GetQssFile.readQss('../resource/qss/maps.qss'))
+
+        self.log = logging.getLogger('StarCraftII')
 
         # font
         font = QFont("Roman times",36,QFont.Bold)
@@ -82,7 +88,9 @@ class Maps(QWidget):
             Maps.mapDesignEvent()
 
     def chooseMapEvent(self):
-        print('clicked choose map in maps')
+        message = 'choose new map'
+        self.log.info(message)
+        Signal.get_signal().emit_signal(message)
         self.window = FramelessWindow('choose map')
         self.dialog = QDialog()
         # tab item name
@@ -110,14 +118,20 @@ class Maps(QWidget):
         listDialog = ListDialog(list_str, list_item, title)
         listDialog.setupUi(self.dialog, self.window)
         self.window.setWidget(self.dialog)
-        self.initFrameLessWindow(QSize(700, 600), 'Maps', QIcon('../resource/drawable/logo.png'))
+        self.initFrameLessWindow(
+            QSize(700, 600),
+            'Maps',
+            QIcon('../resource/drawable/logo.png')
+        )
         self.window.show()
         # self.dialog.setModal(True)
         # self.dialog.show()
 
     @staticmethod
     def mapDesignEvent():
-        print('clicked map design in maps')
+        message = 'open the map designer to customize the map'
+        self.log.info(message)
+        Signal.get_signal().emit_signal(message)
         # os.system(strings.SCMDRAFT)
         subprocess.Popen(strings.SCMDRAFT)
 

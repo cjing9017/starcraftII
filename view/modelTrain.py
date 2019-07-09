@@ -15,6 +15,10 @@ from util.getQssFile import GetQssFile
 from popupWindow.modelTrainDescriptionDialog import ModelTrainDescriptionDialog
 
 from barWindow.frameLessWindow import FramelessWindow
+from util.signal import Signal
+
+from util.logs import Log
+import logging
 
 
 class ModelTrain(QWidget):
@@ -23,6 +27,8 @@ class ModelTrain(QWidget):
         super(ModelTrain, self).__init__()
         self.setObjectName('ModelTrain')
         self.setStyleSheet(GetQssFile.readQss('../resource/qss/modelTrain.qss'))
+
+        self.log = logging.getLogger('StarCraftII')
 
         # font
         font = QFont()
@@ -63,14 +69,20 @@ class ModelTrain(QWidget):
             self.modelTrainEvent()
 
     def modelTrainEvent(self):
-        print('clicked model train in model train')
+        message = 'the setting of model train'
+        self.log.info(message)
+        Signal.get_signal().emit_signal(message)
         self.window = FramelessWindow('model train')
         self.dialog = QDialog()
         description = "a description of model train"
         model = ModelTrainDescriptionDialog(description)
         model.setupUi(self.dialog)
         self.window.setWidget(self.dialog)
-        self.initFrameLessWindow(QSize(700, 600), 'Model Train', QIcon('../resource/drawable/logo.png'))
+        self.initFrameLessWindow(
+            QSize(700, 600),
+            'Model Train',
+            QIcon('../resource/drawable/logo.png')
+        )
         self.window.show()
         # self.dialog.setModal(True)
         # self.dialog.show()
