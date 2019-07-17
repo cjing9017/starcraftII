@@ -42,6 +42,7 @@ class VideoBox(QWidget):
         self.playButton = QPushButton()
         self.playButton.setEnabled(True)
         self.playButton.setIcon(self.style().standardIcon(QStyle.SP_MediaPlay))
+        # self.playButton.setIcon(QIcon('../resource/drawable/start.png'))
         self.playButton.clicked.connect(self.switch_video)
 
         control_box = QHBoxLayout()

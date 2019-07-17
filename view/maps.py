@@ -32,7 +32,7 @@ class Maps(QWidget):
         self.setObjectName('Maps')
         self.setStyleSheet(GetQssFile.readQss('../resource/qss/maps.qss'))
 
-        self.log = logging.getLogger('StarCraftII')
+        self.log = logging.getLogger("StarCraftII")
 
         # font
         font = QFont("Roman times",36,QFont.Bold)
@@ -130,7 +130,8 @@ class Maps(QWidget):
     @staticmethod
     def mapDesignEvent():
         message = 'open the map designer to customize the map'
-        self.log.info(message)
+        log = logging.getLogger('StarCraftII')
+        log.info(message)
         Signal.get_signal().emit_signal(message)
         # os.system(strings.SCMDRAFT)
         subprocess.Popen(strings.SCMDRAFT)
