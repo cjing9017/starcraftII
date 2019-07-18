@@ -26,6 +26,7 @@ from popupWindow.tabItem.buildMarines import BuildMarines
 from popupWindow.tabItem.collectMineralsAndGas import CollectMineralsAndGas
 from popupWindow.tabItem.defeatRoaches import DefeatRoaches
 from popupWindow.tabItem.defeatZerglingsAndBanelings import DefeatZerglingsAndBanelings
+from common.Config import *
 
 
 class ListDialog(object):
@@ -103,3 +104,9 @@ class ListDialog(object):
             # add item content
             self.item_widget.addWidget(eval(self.list_item[i]))
 
+    def confirmAccept(self):
+
+        map_name_index = self.item_widget.currentIndex()
+        current_map_name = self.list_str[map_name_index]
+        print("map_name_index : ", map_name_index)
+        print("current_map_name : ", current_map_name)

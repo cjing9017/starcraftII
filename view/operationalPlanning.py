@@ -8,8 +8,8 @@ from PyQt5.QtWidgets import QHBoxLayout, QFrame, QPushButton, QVBoxLayout
 from PyQt5.QtWidgets import QDesktopWidget, QDialog
 from PyQt5.Qt import QIcon, QFont, QSize
 from PyQt5.QtCore import Qt, QTimer
-
-
+from algorithms.AlgorithmExample import AlgorithmAgent
+import time, threading
 from resource import globalInformation
 from util.getQssFile import GetQssFile
 from popupWindow.listDialog import ListDialog
@@ -18,7 +18,7 @@ from resource import strings
 
 from barWindow.frameLessWindow import FramelessWindow
 from util.signal import Signal
-
+from common.Config import *
 import time
 from util.logs import Log
 import logging
@@ -32,6 +32,9 @@ class OperationalPlanning(QWidget):
         self.setStyleSheet(GetQssFile.readQss('../resource/qss/operationalPlanning.qss'))
 
         self.log = logging.getLogger('StarCraftII')
+        # test fix algorithm
+        self.algorithm = None
+        self.algorithmThread = None
 
         # font
         font = QFont()
@@ -144,6 +147,9 @@ class OperationalPlanning(QWidget):
         message = 'start the simulation'
         self.log.info(message)
         Signal.get_signal().emit_signal(message)
+        # fix rl algorithm
+        self.algorithm = AlgorithmAgent()
+        self.algorithmThread = threading.Thread(target=self.algorithm.algorithm(current_map_name), name='StarCraft2Thread')
 
     # pause simulation
     def pauseEvent(self):

@@ -60,3 +60,7 @@ REPLAY_TITLE = 'Replay'
 # selection of situation information
 
 # selection of model train
+
+# default configuration
+DEFAULT_MAP_SMAC = "8m"
+DEFAULT_ALGORITHM = "AlgorithmAgent"
