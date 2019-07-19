@@ -1,5 +1,5 @@
 from PyQt5.QtCore import QThread, pyqtSignal
-from gevent.libev.corecext import async
+# from gevent.libev.corecext import async
 from smac.env import StarCraft2Env
 import numpy as np
 
@@ -12,8 +12,8 @@ class AlgorithmAgent(object):
     def algorithm(self, map_name="8m"):
 
         """
-        强化学习算法
-        :param map_name: 地图名称
+        reinforcement learning algorithm
+        :param map_name: map name
         :return:
         """
         print("start rl algorithm")

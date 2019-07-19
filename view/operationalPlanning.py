@@ -149,7 +149,9 @@ class OperationalPlanning(QWidget):
         Signal.get_signal().emit_signal(message)
         # fix rl algorithm
         self.algorithm = AlgorithmAgent()
-        self.algorithmThread = threading.Thread(target=self.algorithm.algorithm(current_map_name), name='StarCraft2Thread')
+        self.algorithmThread = threading.Thread(
+            target=self.algorithm.algorithm(globalInformation.get_value('current_map_name')),
+            name='StarCraft2Thread')
 
     # pause simulation
     def pauseEvent(self):

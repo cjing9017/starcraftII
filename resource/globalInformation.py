@@ -3,6 +3,8 @@
 @date: 2019/05/13
 """
 
+from resource import strings
+
 
 def init():
     global global_dict
@@ -11,7 +13,8 @@ def init():
 
 
 def initArgument():
-    pass
+    set_value('current_map_name', strings.DEFAULT_MAP_SMAC)
+    set_value('current_algorithm', strings.DEFAULT_ALGORITHM)
 
 
 def set_value(key, value):
