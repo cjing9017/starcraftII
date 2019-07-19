@@ -27,6 +27,10 @@ from util.getQssFile import GetQssFile
 from resource import strings
 from resource import globalInformation
 
+from util.logs import Log
+import logging
+from util.signal import Signal
+
 from barWindow.frameLessWindow import FramelessWindow
 
 
@@ -93,36 +97,44 @@ class MainWindow(QWidget):
 
         self.list_widget.currentRowChanged.connect(
             self.list_items.setCurrentIndex)
-        list_str = [
+        self.list_widget.currentRowChanged.connect(
+            self.item_choose)
+        self.list_str = [
             strings.PATTERN,
             strings.OPERATIONAL_PLANNING,
             strings.MAPS,
             strings.REPLAY,
             strings.SITUATION_INFORMATION,
             strings.MODEL_TRAIN]
-        item_view = [
+        self.item_view = [
             strings.CLASS_PATTERN,
             strings.CLASS_OPERATIONAL_PLANNING,
             strings.CLASS_MAPS,
             strings.CLASS_REPLAY,
             strings.CLASS_SITUATION_INFORMATION,
             strings.CLASS_MODEL_TRAIN]
-        for i in range(len(list_str)):
+        for i in range(len(self.list_str)):
             font = QFont()
             font.setBold(True)
             font.setWeight(50)
             font.setPixelSize(14)
             # add item to menu
-            item = QListWidgetItem(list_str[i], self.list_widget)
+            item = QListWidgetItem(self.list_str[i], self.list_widget)
             item.setFont(font)
             item.setTextAlignment(Qt.AlignCenter)
             if i == 0:
                 item.setSelected(True)
-            self.list_items.addWidget(eval(item_view[i]))
+            self.list_items.addWidget(eval(self.item_view[i]))
 
     def setBottomLayout(self):
         self.fightview = FightView()
         self.bottom_layout.addWidget(self.fightview)
+
+    def item_choose(self):
+        message = self.list_str[self.list_widget.currentRow()]
+        log = logging.getLogger('StarCraftII')
+        log.info('item change: {}'.format(message))
+        Signal.get_signal().emit_signal('item change: {}'.format(message))
 
 
 def main():

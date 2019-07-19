@@ -12,6 +12,9 @@ from PyQt5.QtWidgets import QListWidget, QStackedWidget, QListWidgetItem
 from PyQt5.Qt import QFont
 
 from util.getQssFile import GetQssFile
+import logging
+from util.signal import Signal
+from util.logs import Log
 
 # the description of algorithm
 from popupWindow.tabItem.algorithm1 import Algorithm1
@@ -29,7 +32,7 @@ from popupWindow.tabItem.defeatZerglingsAndBanelings import DefeatZerglingsAndBa
 
 
 class ListDialog(object):
-    def __init__(self, list_str, list_item, title):
+    def __init__(self, list_str, list_item, title, name):
         super(ListDialog, self).__init__()
         self.buttonBox = None
         self.main_layout = None
@@ -41,6 +44,7 @@ class ListDialog(object):
         self.list_str = list_str
         self.list_item = list_item
         self.title = title
+        self.name = name
 
     def setupUi(self, Dialog, window):
         Dialog.setObjectName("Dialog")
@@ -87,6 +91,7 @@ class ListDialog(object):
     def initTab(self):
         # connect tab and item
         self.tab_widget.currentRowChanged.connect(self.item_widget.setCurrentIndex)
+        self.tab_widget.currentRowChanged.connect(self.map_choose)
         for i in range(len(self.list_str)):
             # add item to tab
             font = QFont()
@@ -102,4 +107,10 @@ class ListDialog(object):
                 item.setSelected(True)
             # add item content
             self.item_widget.addWidget(eval(self.list_item[i]))
+
+    def map_choose(self, row):
+        message = 'choose {}: {}'.format(self.name, self.list_str[row])
+        log = logging.getLogger('StarCraftII')
+        log.info(message)
+        Signal.get_signal().emit_signal(message)
 

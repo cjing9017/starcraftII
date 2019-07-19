@@ -60,3 +60,7 @@ REPLAY_TITLE = 'Replay'
 # selection of situation information
 
 # selection of model train
+
+# list dialog type
+TYPE_MAP = 'map'
+TYPE_POLICY = 'policy'

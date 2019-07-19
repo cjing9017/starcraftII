@@ -189,9 +189,8 @@ class OperationalPlanning(QWidget):
         # item content
         list_item = [strings.CLASS_ALGORITHM1, strings.CLASS_ALGORITHM2, strings.CLASS_ALGORITHM3]
         # title name
-        title = strings.OPERATIONAL_PLANNING_TITLE
-        listDialog = ListDialog(list_str, list_item, title)
-        listDialog.setupUi(self.dialog, self.window)
+        self.listDialog = ListDialog(list_str, list_item, strings.OPERATIONAL_PLANNING_TITLE, strings.TYPE_POLICY)
+        self.listDialog.setupUi(self.dialog, self.window)
         self.window.setWidget(self.dialog)
         self.initFrameLessWindow(
             QSize(700, 600),

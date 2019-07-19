@@ -22,6 +22,10 @@ class FightView(QWidget):
     signal = Signal.get_signal().signal
 
     def __init__(self):
+        """
+
+        :rtype:
+        """
         super(FightView, self).__init__()
         self.setObjectName('FightView')
 

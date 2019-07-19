@@ -32,8 +32,6 @@ class Maps(QWidget):
         self.setObjectName('Maps')
         self.setStyleSheet(GetQssFile.readQss('../resource/qss/maps.qss'))
 
-        self.log = logging.getLogger("StarCraftII")
-
         # font
         font = QFont("Roman times",36,QFont.Bold)
         # font.setWeight(50)
@@ -89,7 +87,8 @@ class Maps(QWidget):
 
     def chooseMapEvent(self):
         message = 'choose new map'
-        self.log.info(message)
+        log = logging.getLogger('StarCraftII')
+        log.info(message)
         Signal.get_signal().emit_signal(message)
         self.window = FramelessWindow('choose map')
         self.dialog = QDialog()
@@ -114,9 +113,8 @@ class Maps(QWidget):
             strings.CLASS_MAP_BUILD_MARINES
         ]
         # title name
-        title = strings.MAPS_TITLE
-        listDialog = ListDialog(list_str, list_item, title)
-        listDialog.setupUi(self.dialog, self.window)
+        self.listDialog = ListDialog(list_str, list_item, strings.MAPS_TITLE, strings.TYPE_MAP)
+        self.listDialog.setupUi(self.dialog, self.window)
         self.window.setWidget(self.dialog)
         self.initFrameLessWindow(
             QSize(700, 600),
