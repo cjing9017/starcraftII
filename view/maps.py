@@ -33,7 +33,7 @@ class Maps(QWidget):
         self.setStyleSheet(GetQssFile.readQss('../resource/qss/maps.qss'))
 
         # font
-        font = QFont("Roman times",36,QFont.Bold)
+        font = QFont("Roman times", 36, QFont.Bold)
         # font.setWeight(50)
         # font.setFamily('Helvetica')
         font.setPixelSize(15)
@@ -121,6 +121,7 @@ class Maps(QWidget):
             'Maps',
             QIcon('../resource/drawable/logo.png')
         )
+
         self.window.show()
         # self.dialog.setModal(True)
         # self.dialog.show()

@@ -64,3 +64,7 @@ REPLAY_TITLE = 'Replay'
 # list dialog type
 TYPE_MAP = 'map'
 TYPE_POLICY = 'policy'
+
+# default configuration
+DEFAULT_MAP_SMAC = "8m"
+DEFAULT_ALGORITHM = "AlgorithmAgent"
