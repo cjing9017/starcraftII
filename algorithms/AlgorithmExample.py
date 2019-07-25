@@ -9,7 +9,7 @@ class AlgorithmAgent(object):
     def __init__(self):
         super(AlgorithmAgent, self).__init__()
 
-    def algorithm(self, map_name="8m"):
+    def algorithm(self, map_name="3m"):
 
         """
         reinforcement learning algorithm
