@@ -11,12 +11,11 @@ class AlgorithmAgent(object):
 
     def algorithm(
             self,
-            map_name="8m",
+            map_name="3m",
             window_size_x=1418,
             window_size_y=890,
             window_loc=(5, 155),
     ):
-
         """
         reinforcement learning algorithm
         :param map_name: map name
