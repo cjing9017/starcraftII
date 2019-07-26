@@ -121,6 +121,7 @@ class Maps(QWidget):
             'Maps',
             QIcon('../resource/drawable/logo.png')
         )
+        self.dialog.setModal(True)
 
         self.window.show()
         # self.dialog.setModal(True)

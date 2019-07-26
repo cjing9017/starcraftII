@@ -29,7 +29,6 @@ from popupWindow.tabItem.buildMarines import BuildMarines
 from popupWindow.tabItem.collectMineralsAndGas import CollectMineralsAndGas
 from popupWindow.tabItem.defeatRoaches import DefeatRoaches
 from popupWindow.tabItem.defeatZerglingsAndBanelings import DefeatZerglingsAndBanelings
-from common.Config import *
 
 
 class ListDialog(object):
