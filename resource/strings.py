@@ -66,5 +66,5 @@ TYPE_MAP = 'map'
 TYPE_POLICY = 'policy'
 
 # default configuration
-DEFAULT_MAP_SMAC = "8m"
+DEFAULT_MAP_SMAC = "3m"
 DEFAULT_ALGORITHM = "AlgorithmAgent"

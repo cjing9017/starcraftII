@@ -10,7 +10,7 @@ from PyQt5.QtWidgets import QWidget, QApplication, QSystemTrayIcon
 from PyQt5.QtWidgets import QVBoxLayout, QHBoxLayout, QSplitter
 from PyQt5.Qt import QIcon, QFont, QSize
 from PyQt5.QtWidgets import QDesktopWidget, QListWidget, QStackedWidget
-from PyQt5.QtWidgets import QListWidgetItem, QTextEdit
+from PyQt5.QtWidgets import QListWidgetItem
 from PyQt5.QtCore import Qt
 
 from view.fight import FightView
@@ -30,8 +30,10 @@ from resource import globalInformation
 from util.logs import Log
 import logging
 from util.signal import Signal
+import time
 
 from barWindow.frameLessWindow import FramelessWindow
+from util.splashScreen import SplashScreen
 
 
 class MainWindow(QWidget):
@@ -139,12 +141,16 @@ class MainWindow(QWidget):
 
 def main():
     app = QApplication(sys.argv)
+    splash = SplashScreen()
+    splash.effect()
+    app.processEvents()
     main_window = FramelessWindow('title')
     main_window.setWindowTitle(strings.NAME)
     main_window.setWindowIcon(QIcon('../resource/drawable/logo.png'))
     main_window.resize(QSize(1200, 700))
     main_window.setWidget(MainWindow())
     main_window.showMaximized()
+    splash.finish(main_window)
     sys.exit(app.exec_())
 
 

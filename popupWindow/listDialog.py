@@ -14,6 +14,8 @@ from PyQt5.Qt import QFont
 from util.getQssFile import GetQssFile
 import logging
 from util.signal import Signal
+from resource import strings
+from resource import globalInformation
 from util.logs import Log
 
 # the description of algorithm
@@ -114,3 +116,7 @@ class ListDialog(object):
         log = logging.getLogger('StarCraftII')
         log.info(message)
         Signal.get_signal().emit_signal(message)
+        if self.name == strings.TYPE_POLICY:
+            globalInformation.set_value(strings.TYPE_POLICY, self.list_str[row])
+        elif self.name == strings.TYPE_MAP:
+            globalInformation.set_value(strings.TYPE_MAP, self.list_str[row])
