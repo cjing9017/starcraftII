@@ -9,6 +9,7 @@ from PyQt5.QtWidgets import QDesktopWidget, QDialog
 from PyQt5.Qt import QIcon, QFont, QSize
 from PyQt5.QtCore import Qt, QTimer
 from algorithms.AlgorithmExample import AlgorithmAgent
+from algorithms.IQL import IQL
 import time, threading
 from resource import globalInformation
 from util.getQssFile import GetQssFile
@@ -149,9 +150,9 @@ class OperationalPlanning(QWidget):
         self.log.info(message)
         Signal.get_signal().emit_signal(message)
         # fix rl algorithm
-        self.algorithm = AlgorithmAgent()
+        self.algorithm = IQL()
         self.algorithmThread = threading.Thread(
-            target=self.algorithm.algorithm(globalInformation.get_value('current_map_name')),
+            target=self.algorithm.algorithm(),
             name='StarCraft2Thread')
 
     # pause simulation

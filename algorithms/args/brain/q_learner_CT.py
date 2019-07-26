@@ -133,16 +133,17 @@ class QLearner:
         th.save(self.Q.state_dict(), path + 'Q' +'.pt')
 
     def load_model(self, path):
-        file = path + 'best_Q' + '.pt'
-        if os.path.isfile(file):
-            self.Q.load_state_dict(th.load(file))
-        else:
-            file = path + 'Q' + '.pt'
-            if os.path.isfile(file):
-                self.Q.load_state_dict(th.load(file))
-            else:
-                print("here have not such model")
+        file = path + 'load_Q.pt'
+        if not os.path.isfile(file):
+            file = path + 'best_Q.pt'
+            if not os.path.isfile(file):
+                file = path + 'Q.pt'
+                if not os.path.isfile(file):
+                    print("here have not such model")
+                    return
+        self.Q.load_state_dict(th.load(file))
         self.target_Q.load_state_dict(self.Q.state_dict())
+        print('sucess load the model in ',file)
         return
 
 
