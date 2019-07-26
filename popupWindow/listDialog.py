@@ -30,6 +30,8 @@ from popupWindow.tabItem.collectMineralsAndGas import CollectMineralsAndGas
 from popupWindow.tabItem.defeatRoaches import DefeatRoaches
 from popupWindow.tabItem.defeatZerglingsAndBanelings import DefeatZerglingsAndBanelings
 
+# from common.Config import *
+
 
 class ListDialog(object):
     def __init__(self, list_str, list_item, title, name):

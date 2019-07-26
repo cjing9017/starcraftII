@@ -18,6 +18,8 @@ from resource import strings
 
 from barWindow.frameLessWindow import FramelessWindow
 from util.signal import Signal
+
+# from common.Config import *
 import time
 from util.logs import Log
 import logging
