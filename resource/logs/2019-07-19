@@ -1,0 +1,116 @@
+2019-07-19 10:35:38 StarCraftII INFO: item change: Operatioal Planning
+2019-07-19 10:35:42 StarCraftII INFO: switch policy
+2019-07-19 10:36:02 StarCraftII INFO: start the simulation
+2019-07-19 10:36:03 StarCraftII INFO: pause the simulation
+2019-07-19 10:36:03 StarCraftII INFO: stop the simulation
+2019-07-19 10:36:07 StarCraftII INFO: open the map description
+2019-07-19 10:36:10 StarCraftII INFO: item change: Pattern
+2019-07-19 10:36:12 StarCraftII INFO: change pattern: human vs. machine
+2019-07-19 10:36:12 StarCraftII INFO: change pattern: machine vs. machine
+2019-07-19 10:36:14 StarCraftII INFO: item change: Maps
+2019-07-19 10:36:16 StarCraftII INFO: choose new map
+2019-07-19 10:36:25 StarCraftII INFO: item change: Replay
+2019-07-19 10:36:26 StarCraftII INFO: item change: Situation Information
+2019-07-19 10:36:27 StarCraftII INFO: item change: Model Train
+2019-07-19 10:37:10 StarCraftII INFO: item change: Maps
+2019-07-19 10:37:10 StarCraftII INFO: item change: Operatioal Planning
+2019-07-19 10:37:11 StarCraftII INFO: switch policy
+2019-07-19 10:44:43 StarCraftII INFO: item change: Operatioal Planning
+2019-07-19 10:44:45 StarCraftII INFO: switch policy
+2019-07-19 10:46:34 StarCraftII INFO: item change: Operatioal Planning
+2019-07-19 10:46:35 StarCraftII INFO: switch policy
+2019-07-19 10:48:07 StarCraftII INFO: choose map
+2019-07-19 10:52:20 StarCraftII INFO: item change: Maps
+2019-07-19 10:52:23 StarCraftII INFO: choose new map
+2019-07-19 10:52:32 StarCraftII INFO: choose new map
+2019-07-19 10:53:28 StarCraftII INFO: item change: Operatioal Planning
+2019-07-19 10:53:33 StarCraftII INFO: switch policy
+2019-07-19 10:53:37 StarCraftII INFO: item change: Maps
+2019-07-19 10:53:38 StarCraftII INFO: choose new map
+2019-07-19 10:54:22 StarCraftII INFO: item change: Maps
+2019-07-19 10:54:23 StarCraftII INFO: choose new map
+2019-07-19 10:55:39 StarCraftII INFO: item change: Maps
+2019-07-19 10:55:40 StarCraftII INFO: choose new map
+2019-07-19 11:01:09 StarCraftII INFO: item change: Maps
+2019-07-19 11:01:10 StarCraftII INFO: choose new map
+2019-07-19 11:02:37 StarCraftII INFO: item change: Maps
+2019-07-19 11:02:38 StarCraftII INFO: choose new map
+2019-07-19 11:03:09 StarCraftII INFO: choose map: MineralShards
+2019-07-19 11:08:27 StarCraftII INFO: item change: Operatioal Planning
+2019-07-19 11:08:29 StarCraftII INFO: item change: Maps
+2019-07-19 11:08:31 StarCraftII INFO: choose new map
+2019-07-19 11:11:00 StarCraftII INFO: item change: Maps
+2019-07-19 11:11:01 StarCraftII INFO: choose new map
+2019-07-19 11:11:02 StarCraftII INFO: choose map: Zerglings
+2019-07-19 11:11:03 StarCraftII INFO: choose map: Banelings
+2019-07-19 11:11:04 StarCraftII INFO: choose map: MineralShards
+2019-07-19 11:11:04 StarCraftII INFO: choose map: Roaches
+2019-07-19 11:11:05 StarCraftII INFO: choose map: MineralsAndGas
+2019-07-19 11:11:05 StarCraftII INFO: choose map: MineralShards
+2019-07-19 11:11:06 StarCraftII INFO: choose map: Zerglings
+2019-07-19 11:11:06 StarCraftII INFO: choose map: Banelings
+2019-07-19 11:23:41 StarCraftII INFO: item change: Operatioal Planning
+2019-07-19 11:23:42 StarCraftII INFO: switch policy
+2019-07-19 11:26:33 StarCraftII INFO: item change: Maps
+2019-07-19 11:26:34 StarCraftII INFO: item change: Operatioal Planning
+2019-07-19 11:26:35 StarCraftII INFO: switch policy
+2019-07-19 11:26:36 StarCraftII INFO: choose policy: algorithm2
+2019-07-19 11:26:55 StarCraftII INFO: item change: Operatioal Planning
+2019-07-19 11:26:56 StarCraftII INFO: switch policy
+2019-07-19 11:26:57 StarCraftII INFO: choose policy: algorithm2
+2019-07-19 11:26:57 StarCraftII INFO: choose policy: algorithm3
+2019-07-19 11:26:58 StarCraftII INFO: choose policy: algorithm1
+2019-07-19 11:26:58 StarCraftII INFO: choose policy: algorithm2
+2019-07-19 11:26:58 StarCraftII INFO: choose policy: algorithm3
+2019-07-19 11:27:01 StarCraftII INFO: item change: Maps
+2019-07-19 11:27:02 StarCraftII INFO: choose new map
+2019-07-19 11:27:02 StarCraftII INFO: choose map: MineralShards
+2019-07-19 11:27:03 StarCraftII INFO: choose map: Zerglings
+2019-07-19 11:27:03 StarCraftII INFO: choose map: Banelings
+2019-07-19 11:27:04 StarCraftII INFO: choose map: MineralsAndGas
+2019-07-19 11:27:04 StarCraftII INFO: choose map: Marines
+2019-07-19 11:27:05 StarCraftII INFO: choose map: Zerglings
+2019-07-19 11:27:05 StarCraftII INFO: choose map: Roaches
+2019-07-19 11:27:06 StarCraftII INFO: choose map: Beacon
+2019-07-19 11:27:06 StarCraftII INFO: choose map: MineralShards
+2019-07-19 11:27:07 StarCraftII INFO: choose map: Zerglings
+2019-07-19 11:27:08 StarCraftII INFO: choose map: Roaches
+2019-07-19 11:27:08 StarCraftII INFO: choose map: Banelings
+2019-07-19 11:27:09 StarCraftII INFO: choose map: MineralsAndGas
+2019-07-19 11:27:09 StarCraftII INFO: choose map: Marines
+2019-07-19 12:04:14 StarCraftII INFO: item change: Operatioal Planning
+2019-07-19 12:04:15 StarCraftII INFO: start the simulation
+2019-07-19 12:06:33 StarCraftII INFO: item change: Operatioal Planning
+2019-07-19 12:06:34 StarCraftII INFO: start the simulation
+2019-07-19 12:09:23 StarCraftII INFO: item change: Operatioal Planning
+2019-07-19 12:09:24 StarCraftII INFO: start the simulation
+2019-07-19 12:10:39 StarCraftII INFO: item change: Pattern
+2019-07-19 12:10:40 StarCraftII INFO: item change: Operatioal Planning
+2019-07-19 12:18:16 StarCraftII INFO: item change: Operatioal Planning
+2019-07-19 12:18:17 StarCraftII INFO: start the simulation
+2019-07-19 13:14:39 StarCraftII INFO: change pattern: human vs. machine
+2019-07-19 13:14:39 StarCraftII INFO: change pattern: machine vs. machine
+2019-07-19 13:14:40 StarCraftII INFO: item change: Operatioal Planning
+2019-07-19 13:14:42 StarCraftII INFO: pause the simulation
+2019-07-19 13:14:43 StarCraftII INFO: stop the simulation
+2019-07-19 13:14:45 StarCraftII INFO: switch policy
+2019-07-19 13:14:46 StarCraftII INFO: choose policy: algorithm2
+2019-07-19 13:14:46 StarCraftII INFO: choose policy: algorithm3
+2019-07-19 13:14:48 StarCraftII INFO: item change: Maps
+2019-07-19 13:14:49 StarCraftII INFO: choose new map
+2019-07-19 13:14:50 StarCraftII INFO: choose map: MineralShards
+2019-07-19 13:14:50 StarCraftII INFO: choose map: Roaches
+2019-07-19 13:14:51 StarCraftII INFO: choose map: Banelings
+2019-07-19 13:14:53 StarCraftII INFO: item change: Replay
+2019-07-19 13:14:54 StarCraftII INFO: watch the replay
+2019-07-19 13:14:56 StarCraftII INFO: item change: Situation Information
+2019-07-19 13:14:57 StarCraftII INFO: situation information: consumption
+2019-07-19 13:14:58 StarCraftII INFO: situation information: resource
+2019-07-19 13:14:59 StarCraftII INFO: situation information: score
+2019-07-19 13:14:59 StarCraftII INFO: situation information: output
+2019-07-19 13:15:01 StarCraftII INFO: item change: Model Train
+2019-07-19 13:15:02 StarCraftII INFO: the setting of model train
+2019-07-19 13:15:05 StarCraftII INFO: item change: Operatioal Planning
+2019-07-19 13:15:06 StarCraftII INFO: start the simulation
+2019-07-19 13:16:41 StarCraftII INFO: item change: Operatioal Planning
+2019-07-19 13:16:43 StarCraftII INFO: start the simulation

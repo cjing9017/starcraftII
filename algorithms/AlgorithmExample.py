@@ -16,6 +16,7 @@ class AlgorithmAgent(object):
             window_size_y=890,
             window_loc=(5, 155),
     ):
+
         """
         reinforcement learning algorithm
         :param map_name: map name
