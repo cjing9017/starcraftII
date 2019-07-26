@@ -6,7 +6,6 @@ from queue import PriorityQueue
 from collections import deque
 
 
-
 class Memmory:
     """
     1. append(exprience):
@@ -49,7 +48,6 @@ class Memmory:
 
     def get_action(self, joint_action):
         return joint_action[self.index]
-
 
     def append(self, exprience):
         for key in exprience:
@@ -159,7 +157,6 @@ class Memmory:
         return batch
 
 
-
 class Leader_Memmory:
     """
     unimplement!!!
@@ -201,10 +198,9 @@ class Leader_Memmory:
     def action_onehot(self, joint_action):
         one_hot = th.zeros((self.n_agent, self.n_action))
         # print(joint_action.unsqueeze(1))
-        one_hot = one_hot.scatter(dim=1,index=joint_action.unsqueeze(1), value=1)
+        one_hot = one_hot.scatter(dim=1, index=joint_action.unsqueeze(1), source=1)
         # print(one_hot)
         return one_hot
-
 
     def append(self, exprience):
         for key in exprience:
@@ -289,7 +285,6 @@ class Leader_Memmory:
 
         samlpe_new_memory = batch_size // 4
         new_memory = trajectory_len // 4
-
 
         for i in range(batch_size - samlpe_new_memory):
             e = - rd.randint(1, new_memory)

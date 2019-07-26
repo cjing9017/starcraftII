@@ -6,6 +6,7 @@ import os
 
 from .rnn_agent import RNNAgent
 
+
 class QLearner:
     """
     1. DQN- RNNAgent
@@ -96,12 +97,10 @@ class QLearner:
         grad_norm = th.nn.utils.clip_grad_norm_(self.params, 10)
         self.optimiser.step()
 
-
     def forward(self, batch, t, Q_func):
         inputs = self._build_input(batch, t)
         outs, self.hidden_states = Q_func(inputs, self.hidden_states)
         return outs
-
 
     def _build_input(self, batch, t):
         batch_size = batch['batch_size']
