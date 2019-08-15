@@ -12,27 +12,32 @@ class QLearner:
     1. DQN- RNNAgent
     2. train
     """
-    def __init__(self, n_agent, n_action, obs_shape=80):
-        self.n_agent = n_agent
-        self.n_action = n_action
-        self.obs_shape = obs_shape
 
-        self.gamma = 0.99
-        self.learning_rate = 0.0005
-        self.alpha = 0.99
-        self.eps = 1e-05
+    def __init__(self, param_set, env_info):
+        self.n_action = env_info["n_actions"]
+        self.n_agent = env_info["n_agents"]
+        self.obs_shape = env_info['obs_shape']
+
+        self.gamma = param_set['gamma']
+        self.learning_rate = param_set['learning_rate']
+        self.alpha = param_set['alpha']
+        self.eps = param_set['eps']
 
         self.obs_last_action = True
         self.obs_agent_id = True
-        output_shape = n_action
+        output_shape = self.n_action
         input_shape = self._get_input_shape()
 
-        self.Q = RNNAgent(input_shape,output_shape)
+        self.Q = RNNAgent(input_shape, output_shape)
         self.params = self.Q.parameters()
         self.target_Q = copy.deepcopy(self.Q)
         self.optimiser = RMSprop(params=self.params, lr=self.learning_rate, alpha=self.alpha, eps=self.eps)
 
         self.hidden_states = None
+
+        self.train_step = 0
+        self.last_update_step = 0
+        self.update_frequncy = param_set['target_update_interval']
 
     def update(self):
         self.target_Q.load_state_dict(self.Q.state_dict())

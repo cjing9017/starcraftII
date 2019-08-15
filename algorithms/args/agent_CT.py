@@ -1,37 +1,42 @@
 import numpy as np
-import random as rd
 import torch as th
 from torch.distributions import Categorical
 
 from .brain.mamory import Leader_Memmory
 from .brain.q_learner_CT import QLearner
+from .brain.COMA_learner import COMALearner
 from .brain.epsilon_schedules import DecayThenFlatSchedule
 
 class Agent_CT:
     """
     centralized train
     """
-    def __init__(self, n_agents, n_actions, max_seq_len, obs_shape, test_only=False):
-        self.n_agents = n_agents
-        self.n_actions = n_actions
+
+    def __init__(self, param_set, env_info, test_only=False):
+        self.n_action = env_info["n_actions"]
+        self.n_agent = env_info["n_agents"]
         self.test_only = test_only
 
         # self.exp_buffer = deque()
 
-        self.memory = Leader_Memmory(n_action=n_actions, n_agent=n_agents, max_seq_len=max_seq_len, obs_shape=obs_shape)
+        self.memory = Leader_Memmory(env_info)
 
         if test_only:
             self.policy = self.greedy_policy
         else:
             self.policy = self.epsi_greedy_policy
-        self.policy_update_frequncy = 200
-        self.clock = 0
-        self.before_learn = 32
+        self.before_learn = param_set['before_learn']
+        self.batch_size = param_set['batch_size']
 
-        self.learner = QLearner(n_agent=self.n_agents, n_action=self.n_actions, obs_shape=obs_shape)
-        self.learn_frequncy = 10
+        ALG = param_set['algorithm']
 
-        self.schedule = DecayThenFlatSchedule(start=1.0, finish=0.05, time_length=50000, decay="linear")
+        if ALG == 'iql_CT':
+            self.learner = QLearner(param_set, env_info)
+        elif ALG == 'COMA':
+            self.learner = COMALearner(param_set, env_info)
+
+        self.schedule = DecayThenFlatSchedule(start=param_set['epsilon_start'], finish=param_set['epsilon_end'],
+                                              time_length=param_set['eps'], decay="linear")
 
     def start_test_mode(self):
         self.test_only = True
@@ -44,9 +49,9 @@ class Agent_CT:
 
     # 1.0 define policies
     def random_policy(self, avail, t_env=0):
-        prop = np.ones(self.n_actions) / (np.nonzero(avail)[0].__len__())
+        prop = np.ones(self.n_action) / (np.nonzero(avail)[0].__len__())
         a = np.array(avail)
-        action = np.random.choice(np.arange(self.n_actions), p=prop * a)
+        action = np.random.choice(np.arange(self.n_action), p=prop * a)
         return action
 
     def epsi_greedy_policy(self, avail, t_env=0):
@@ -55,7 +60,7 @@ class Agent_CT:
         avail = th.FloatTensor(avail)
         q[avail == 0.0] = -float("inf")
 
-        random_numbers = th.rand(self.n_agents)
+        random_numbers = th.rand(self.n_agent)
         pick_random = (random_numbers < epsilon).long()
         random_actions = Categorical(avail.float()).sample().long()
         picked_actions = pick_random * random_actions + (1 - pick_random) * q.argmax(dim=1)
@@ -75,7 +80,6 @@ class Agent_CT:
             print("change policy to greedy")
             self.policy = self.greedy_policy
             return
-        self.learner.update()
 
     # 2. choose action aondition on its policy: select_action
     def select_action(self, experience, t_env=0):
@@ -83,9 +87,8 @@ class Agent_CT:
         return self.policy(avail=experience['available_action'], t_env=t_env)
 
     # 3. learn from experience:  learn
-    def learn(self, experience, terminal=False):
+    def learn(self, experience, t_env=0, terminal=False):
         if terminal:
-            self.clock += 1
             self.memory.end_trajectory(experience)
 
             if not self.test_only:
@@ -93,11 +96,8 @@ class Agent_CT:
                     self.before_learn -= 1
                     return
 
-                self.learner.train(self.memory.get_sample(batch_size=32))
+                self.learner.train(self.memory.get_sample(batch_size=self.batch_size), t_env=t_env)
 
-                if self.clock % self.policy_update_frequncy == 0:
-                    self.update_policy()
-                    self.clock = 0
 
             return
         self.memory.append(experience)

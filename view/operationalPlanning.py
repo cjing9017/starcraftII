@@ -9,7 +9,7 @@ from PyQt5.QtWidgets import QDesktopWidget, QDialog
 from PyQt5.Qt import QIcon, QFont, QSize
 from PyQt5.QtCore import Qt, QTimer
 from algorithms.AlgorithmExample import AlgorithmAgent
-from algorithms.IQL import IQL
+from algorithms.marl import MARL
 import time, threading
 from resource import globalInformation
 from util.getQssFile import GetQssFile
@@ -150,9 +150,42 @@ class OperationalPlanning(QWidget):
         self.log.info(message)
         Signal.get_signal().emit_signal(message)
         # fix rl algorithm
-        self.algorithm = IQL()
+
+        map_name = '3m'
+        difficulty = '3'
+
+        param_set = {}
+        param_set['gamma'] = 0.99
+        param_set['td_lambda'] = 0.8
+        param_set['learning_rate'] = 0.0005
+        param_set['alpha'] = 0.99
+        param_set['eps'] = 1e-05
+        param_set['epsilon_start'] = 1
+        param_set['epsilon_end'] = 0.01
+        param_set['time_length'] = 100000
+        param_set['grad_norm_clip'] = 10
+        param_set['before_learn'] = 50
+        param_set['batch_size'] = 16
+        param_set['target_update_interval'] = 400
+
+        # # # iql set
+        # param_set['algorithm'] = 'iql_CT'
+        # path = '../model/' + map_name + '_iql_CT_3/'
+
+        # COMA set
+        param_set['algorithm'] = 'COMA'
+        path = '../model/' + map_name + '_COMA_3/'
+
+        param_set['map_name'] = map_name
+        param_set['difficulty'] = difficulty
+        param_set['path'] = path
+
+        param_set['load_model'] = True
+        param_set['test'] = True
+
+        self.algorithm = MARL()
         self.algorithmThread = threading.Thread(
-            target=self.algorithm.algorithm(),
+            target=self.algorithm.algorithm(param_set),
             name='StarCraft2Thread')
 
     # pause simulation
