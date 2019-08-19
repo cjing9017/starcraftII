@@ -2,7 +2,7 @@
 @author: cjing9017
 @date: 2019/05/13
 """
-
+from PyQt5.QtMultimedia import QMediaPlayer
 from PyQt5.QtWidgets import QWidget, QDockWidget, QDialog
 from PyQt5.QtWidgets import QHBoxLayout, QVBoxLayout, QFrame
 from PyQt5.QtWidgets import QPushButton, QLabel
@@ -19,6 +19,10 @@ from util.signal import Signal
 
 from util.logs import Log
 import logging
+import sys
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from module.video.VideoRepaly import VideoPlayWindow
 
 
 class Replay(QWidget):
@@ -62,7 +66,12 @@ class Replay(QWidget):
         self.initUI()
 
     def initUI(self):
-        self.replay.clicked.connect(self.buttonEvent)
+        self.replay.clicked.connect(self.video_player)
+
+    def video_player(self):
+        # video window
+        self.video_window = VideoPlayWindow()
+        self.video_window.show()
 
     def buttonEvent(self):
         sender = self.sender()

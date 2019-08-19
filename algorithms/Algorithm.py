@@ -1,5 +1,5 @@
 from PyQt5.QtCore import QThread, pyqtSignal
-# from gevent.libev.corecext import async
+
 from smac.env import StarCraft2Env
 import numpy as np
 
@@ -7,9 +7,10 @@ import logging
 from util.signal import Signal
 
 
-class AlgorithmAgent(object):
+class AlgorithmAgent(QThread):
+    trigger = pyqtSignal()
 
-    def __init__(self):
+    def __int__(self):
         super(AlgorithmAgent, self).__init__()
         self.log = logging.getLogger('StarCraftII')
 
@@ -38,6 +39,9 @@ class AlgorithmAgent(object):
             window_size_y=window_size_y,
             window_loc=window_loc
         )
+
+    def run(self):
+        env = StarCraft2Env(map_name="8m")
         env_info = env.get_env_info()
 
         n_actions = env_info["n_actions"]

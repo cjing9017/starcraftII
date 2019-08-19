@@ -174,18 +174,19 @@ class Leader_Memmory:
     2. get_sample
     """
 
-    def __init__(self, n_agent, n_action, max_seq_len, obs_shape):
-        self.n_agent = n_agent
-        self.n_action = n_action
-        self.obs_shape=obs_shape
-        self.max_seq_len = max_seq_len
+    def __init__(self, env_info):
+        self.n_action = env_info["n_actions"]
+        self.n_agent = env_info["n_agents"]
+        self.obs_shape = env_info['obs_shape']
+        self.max_seq_len = env_info['episode_limit']
+        self.state_shape = env_info['state_shape']
 
         self.PQ = False
         if self.PQ:
             self.trajectories = PriorityQueue()
         else:
             self.trajectories = deque()
-        self.max_n_trajextories = 1000
+        self.max_n_trajextories = 500
         self.max_score = 0
         self.episode_index = 0
 
@@ -209,6 +210,7 @@ class Leader_Memmory:
         one_hot = th.zeros((self.n_agent, self.n_action))
         # print(joint_action.unsqueeze(1))
         one_hot = one_hot.scatter(dim=1, index=joint_action.unsqueeze(1), source=1)
+        # one_hot = one_hot.scatter(dim=1, index=joint_action.unsqueeze(1), value=1)
         # print(one_hot)
         return one_hot
 

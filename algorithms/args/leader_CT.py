@@ -2,12 +2,11 @@ from .agent_CT import Agent_CT
 
 
 class Leader:
-    def __init__(self, n_agents, n_actions, max_seq_len, obs_shape, test_only):
+    def __init__(self, param_set, env_info, test_only):
         self.test_only = test_only
 
-        self.n_agents = n_agents
-        self.n_actions = n_actions
-        self.workers = Agent_CT(n_agents=n_agents, n_actions=n_actions, max_seq_len=max_seq_len, obs_shape=obs_shape, test_only=test_only)
+
+        self.workers = Agent_CT(param_set, env_info=env_info, test_only=test_only)
         self.clock = 0
         self.episode_reward = 0
 
@@ -20,13 +19,13 @@ class Leader:
         joint_action = self.workers.select_action(exprience, t_env)
         return joint_action
 
-    def learn(self, joint_action, reward):
+    def learn(self, joint_action, reward, t_env=0):
         self.episode_reward += reward
         exprience = {
             "joint_action": joint_action,
             "reward": reward
         }
-        self.workers.learn(exprience)
+        self.workers.learn(exprience, t_env=t_env)
 
     def terminal(self, observations, state, available_actions):
         exprience = {
