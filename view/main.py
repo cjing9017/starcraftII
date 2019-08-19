@@ -30,7 +30,6 @@ from resource import globalInformation
 from util.logs import Log
 import logging
 from util.signal import Signal
-import time
 
 from barWindow.frameLessWindow import FramelessWindow
 from util.splashScreen import SplashScreen

@@ -16,9 +16,7 @@ from resource import globalInformation
 
 from view.fight import FightView
 from util.signal import Signal
-
 import logging
-from util.logs import Log
 
 
 class Pattern(QWidget):

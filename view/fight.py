@@ -8,6 +8,7 @@ from PyQt5.QtWidgets import QLabel, QDesktopWidget, QHBoxLayout
 from PyQt5.QtWidgets import QFrame, QPlainTextEdit
 from PyQt5.QtGui import QPixmap, QTextDocument
 from PyQt5.QtCore import pyqtSlot, Qt
+from PyQt5.QtWidgets import QApplication
 
 from util.getQssFile import GetQssFile
 import win32gui
@@ -88,4 +89,5 @@ class FightView(QWidget):
     def updateTextMessage(self, message):
         self.information.appendPlainText('{}: {}'.format(
             time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()), message))
-
+        QApplication.processEvents()
+        # time.sleep(1)

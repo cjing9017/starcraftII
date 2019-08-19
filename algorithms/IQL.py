@@ -4,14 +4,19 @@ import time
 import os
 
 from algorithms.args.leader_CT import Leader
+from util.logs import Log
+import logging
+from util.signal import Signal
 
 
 class IQL(object):
     def __init__(self):
         super(IQL, self).__init__()
+        self.log = logging.getLogger('StarCraftII')
 
     def test(self, env, path, runner, best_score=0):
-        print("start test")
+        self.log.info('start test')
+        Signal.get_signal().emit_signal('start test')
         runner.start_test()
         new_path = path + 'best_'
         test_only = True
@@ -45,7 +50,9 @@ class IQL(object):
 
                     runner.terminal(observations=obs, state=state, available_actions=available_actions)
 
-            print("Total reward in episode {} = {}".format(e, episode_reward))
+            message = "Total reward in episode {} = {}".format(e, episode_reward)
+            self.log.info(message)
+            Signal.get_signal().emit_signal(message)
             scores.append(episode_reward)
         avg_score = sum(scores) / n_episodes
         if avg_score > best_score:
@@ -73,7 +80,9 @@ class IQL(object):
         #  'n_actions': 14,
         #  'n_agents': 8,
         #  'episode_limit': 120}
-        print("env_info: ", env_info)
+        message = "env_info: {}".format(env_info)
+        self.log.info(message)
+        Signal.get_signal().emit_signal(message)
 
         n_actions = env_info["n_actions"]
         n_agents = env_info["n_agents"]
@@ -130,7 +139,9 @@ class IQL(object):
 
                     runner.terminal(observations=obs, state=state, available_actions=available_actions)
 
-            print("Total reward in episode {} = {}".format(e, episode_reward))
+            message = "Total reward in episode {} = {}".format(e, episode_reward)
+            self.log.info(message)
+            Signal.get_signal().emit_signal(message)
             t_env += step
             scores.append(episode_reward)
 

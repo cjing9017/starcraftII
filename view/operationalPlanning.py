@@ -22,7 +22,6 @@ from util.signal import Signal
 
 # from common.Config import *
 import time
-from util.logs import Log
 import logging
 
 
@@ -150,7 +149,8 @@ class OperationalPlanning(QWidget):
         self.log.info(message)
         Signal.get_signal().emit_signal(message)
         # fix rl algorithm
-        self.algorithm = IQL()
+        # self.algorithm = IQL()
+        self.algorithm = AlgorithmAgent()
         self.algorithmThread = threading.Thread(
             target=self.algorithm.algorithm(),
             name='StarCraft2Thread')

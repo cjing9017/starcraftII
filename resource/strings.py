@@ -8,7 +8,7 @@ NAME = 'Intelligent Command Platform'
 
 # menu name
 PATTERN = 'Pattern'
-OPERATIONAL_PLANNING = 'Operatioal Planning'
+OPERATIONAL_PLANNING = 'Operational Planning'
 MAPS = 'Maps'
 REPLAY = 'Replay'
 SITUATION_INFORMATION = 'Situation Information'

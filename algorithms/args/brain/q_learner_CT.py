@@ -5,6 +5,9 @@ import numpy as np
 import os
 
 from .rnn_agent import RNNAgent
+from util.signal import Signal
+from util.logs import Log
+import logging
 
 
 class QLearner:
@@ -16,6 +19,8 @@ class QLearner:
         self.n_agent = n_agent
         self.n_action = n_action
         self.obs_shape = obs_shape
+
+        self.log = logging.getLogger('StarCraftII')
 
         self.gamma = 0.99
         self.learning_rate = 0.0005
@@ -138,11 +143,16 @@ class QLearner:
             if not os.path.isfile(file):
                 file = path + 'Q.pt'
                 if not os.path.isfile(file):
-                    print("here have not such model")
+                    message = "here have not such model"
+                    self.log.info(message)
+                    Signal.get_signal().emit_signal(message)
+
                     return
         self.Q.load_state_dict(th.load(file))
         self.target_Q.load_state_dict(self.Q.state_dict())
-        print('sucess load the model in ',file)
+        message = 'sucess load the model in {}'.format(file)
+        self.log.info(message)
+        Signal.get_signal().emit_signal(message)
         return
 
 

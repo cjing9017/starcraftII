@@ -3,11 +3,15 @@ from PyQt5.QtCore import QThread, pyqtSignal
 from smac.env import StarCraft2Env
 import numpy as np
 
+import logging
+from util.signal import Signal
+
 
 class AlgorithmAgent(object):
 
     def __init__(self):
         super(AlgorithmAgent, self).__init__()
+        self.log = logging.getLogger('StarCraftII')
 
     def algorithm(
             self,
@@ -25,7 +29,9 @@ class AlgorithmAgent(object):
         :param window_loc: window launch position
         :return:
         """
-        print("start rl algorithm")
+        message = "start rl algorithm"
+        self.log.info(message)
+        Signal.get_signal().emit_signal(message)
         env = StarCraft2Env(
             map_name=map_name,
             window_size_x=window_size_x,
@@ -36,8 +42,12 @@ class AlgorithmAgent(object):
 
         n_actions = env_info["n_actions"]
         n_agents = env_info["n_agents"]
-        print("n_actions : ", n_actions)
-        print("n_agents : ", n_agents)
+        message = "n_actions : {}".format(n_actions)
+        self.log.info(message)
+        Signal.get_signal().emit_signal(message)
+        message = "n_agents : {}".format(n_agents)
+        self.log.info(message)
+        Signal.get_signal().emit_signal(message)
 
         n_episodes = 10
 
@@ -60,7 +70,9 @@ class AlgorithmAgent(object):
                 reward, terminated, _ = env.step(actions)
                 episode_reward += reward
 
-            print("Total reward in episode {} = {}".format(e, episode_reward))
+            message = "Total reward in episode {} = {}".format(e, episode_reward)
+            self.log.info(message)
+            Signal.get_signal().emit_signal(message)
 
         env.close()
 

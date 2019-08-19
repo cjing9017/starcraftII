@@ -6,6 +6,10 @@ from torch.distributions import Categorical
 from .brain.mamory import Leader_Memmory
 from .brain.q_learner_CT import QLearner
 from .brain.epsilon_schedules import DecayThenFlatSchedule
+from util.signal import Signal
+from util.logs import Log
+import logging
+
 
 class Agent_CT:
     """
@@ -15,6 +19,8 @@ class Agent_CT:
         self.n_agents = n_agents
         self.n_actions = n_actions
         self.test_only = test_only
+
+        self.log = logging.getLogger('StarCraftII')
 
         # self.exp_buffer = deque()
 
@@ -70,9 +76,14 @@ class Agent_CT:
 
     # 1. improve policy: update_policy
     def update_policy(self):
-        print('\tagents update his target')
+        message = '\tagents update his target'
+        self.log.info(message)
+        Signal.get_signal().emit_signal(message)
+
         if self.policy == self.random_policy:
-            print("change policy to greedy")
+            message = "change policy to greedy"
+            self.log.info(message)
+            Signal.get_signal().emit_signal(message)
             self.policy = self.greedy_policy
             return
         self.learner.update()

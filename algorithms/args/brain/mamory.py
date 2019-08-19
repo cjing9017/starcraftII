@@ -5,6 +5,10 @@ import copy
 from queue import PriorityQueue
 from collections import deque
 
+from util.logs import Log
+from util.signal import Signal
+import logging
+
 
 class Memmory:
     """
@@ -15,6 +19,8 @@ class Memmory:
     def __init__(self, index, n_action, max_seq_len):
         self.index = index
         self.n_action = n_action
+
+        self.log = logging.getLogger('StarCraftII')
 
         # self.trajectories = deque()
         self.trajectories = PriorityQueue()
@@ -143,9 +149,13 @@ class Memmory:
         return batch
 
     def show_memory(self):
-        print("agent ", self.index)
+        message = "agent {}".format(self.index)
+        self.log.info(message)
+        Signal.get_signal().emit_signal(message)
         for _, _, t in self.trajectories.queue:
-            print("len: ", len(t['observation']), "; score: ", t['score'])
+            message = "len: {}; score: ".format(len(t['observation']), t['score'])
+            self.log.info(message)
+            Signal.get_signal().emit_signal(message)
 
     def get_current_trajectory(self):
         batch = {
@@ -323,10 +333,15 @@ class Leader_Memmory:
         return batch
 
     def show_memory(self):
-        print("agent ", self.index)
+        message = "agent ".format(self.index)
+        self.log.info(message)
+        Signal.get_signal().emit_signal(message)
+
         if self.PQ:
             for _, _, t in self.trajectories.queue:
-                print("len: ", len(t['observation']), "; score: ", t['score'])
+                message = "len: {}; score: {}".format(len(t['observation']), t['score'])
+                self.log.info(message)
+                Signal.get_signal().emit_signal(message)
 
     def get_current_trajectory(self):
         if self.current_trajectory['action_onehot'] == []:
