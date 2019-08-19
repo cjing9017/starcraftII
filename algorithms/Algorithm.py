@@ -12,36 +12,18 @@ class AlgorithmAgent(QThread):
 
     def __int__(self):
         super(AlgorithmAgent, self).__init__()
+
+    def run(self):
         self.log = logging.getLogger('StarCraftII')
-
-    def algorithm(
-            self,
-            map_name="3m",
-            window_size_x=1418,
-            window_size_y=890,
-            window_loc=(5, 155),
-    ):
-
-        """
-        reinforcement learning algorithm
-        :param map_name: map name
-        :param window_size_x: window width
-        :param window_size_y: window height
-        :param window_loc: window launch position
-        :return:
-        """
         message = "start rl algorithm"
         self.log.info(message)
         Signal.get_signal().emit_signal(message)
         env = StarCraft2Env(
-            map_name=map_name,
-            window_size_x=window_size_x,
-            window_size_y=window_size_y,
-            window_loc=window_loc
+            map_name="3m",
+            window_size_x=1418,
+            window_size_y=890,
+            window_loc=(5, 155),
         )
-
-    def run(self):
-        env = StarCraft2Env(map_name="8m")
         env_info = env.get_env_info()
 
         n_actions = env_info["n_actions"]

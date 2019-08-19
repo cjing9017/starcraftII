@@ -4,12 +4,14 @@
 """
 
 from resource import strings
+import logging
 
 
 def init():
     global global_dict
     global_dict = {}
     initArgument()
+    log = logging.getLogger('StarCraftII')
 
 
 def initArgument():

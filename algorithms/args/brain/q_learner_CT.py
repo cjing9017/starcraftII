@@ -15,14 +15,14 @@ class QLearner:
     1. DQN- RNNAgent
     2. train
     """
-
+    def __init__(self, param_set, env_info):
         self.log = logging.getLogger('StarCraftII')
 
         self.gamma = 0.99
         self.learning_rate = 0.0005
         self.alpha = 0.99
         self.eps = 1e-05
-    def __init__(self, param_set, env_info):
+
         self.n_action = env_info["n_actions"]
         self.n_agent = env_info["n_agents"]
         self.obs_shape = env_info['obs_shape']

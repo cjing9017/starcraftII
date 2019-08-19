@@ -66,7 +66,7 @@ class Replay(QWidget):
         self.initUI()
 
     def initUI(self):
-        self.replay.clicked.connect(self.video_player)
+        self.replay.clicked.connect(self.buttonEvent)
 
     def video_player(self):
         # video window
@@ -76,7 +76,7 @@ class Replay(QWidget):
     def buttonEvent(self):
         sender = self.sender()
         if sender == self.replay:
-            self.replayEvent()
+            self.video_player()
 
     def replayEvent(self):
         message = 'watch the replay'

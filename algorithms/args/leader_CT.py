@@ -4,8 +4,6 @@ from .agent_CT import Agent_CT
 class Leader:
     def __init__(self, param_set, env_info, test_only):
         self.test_only = test_only
-
-
         self.workers = Agent_CT(param_set, env_info=env_info, test_only=test_only)
         self.clock = 0
         self.episode_reward = 0
