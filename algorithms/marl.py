@@ -5,7 +5,9 @@ import os
 
 from .args.leader_CT import Leader
 
+
 class MARL(object):
+
     def __init__(self):
         super(MARL, self).__init__()
 

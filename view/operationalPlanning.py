@@ -8,7 +8,8 @@ from PyQt5.QtWidgets import QHBoxLayout, QFrame, QPushButton, QVBoxLayout
 from PyQt5.QtWidgets import QDesktopWidget, QDialog
 from PyQt5.Qt import QIcon, QFont, QSize
 from PyQt5.QtCore import Qt, QTimer
-from algorithms.AlgorithmExample import AlgorithmAgent
+# from algorithms.AlgorithmExample import AlgorithmAgent
+from algorithms.Algorithm import AlgorithmAgent
 from algorithms.marl import MARL
 import time, threading
 from resource import globalInformation
@@ -183,10 +184,15 @@ class OperationalPlanning(QWidget):
         param_set['load_model'] = True
         param_set['test'] = True
 
-        self.algorithm = MARL()
-        self.algorithmThread = threading.Thread(
-            target=self.algorithm.algorithm(param_set),
-            name='StarCraft2Thread')
+        # self.algorithm = MARL()
+        # self.algorithmThread = threading.Thread(
+        #     target=self.algorithm.algorithm(param_set),
+        #     name='StarCraft2Thread')
+
+        self.algorithm = AlgorithmAgent()
+        self.algorithm.start()
+
+
 
     # pause simulation
     def pauseEvent(self):
