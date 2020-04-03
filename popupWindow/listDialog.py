@@ -19,18 +19,14 @@ from resource import globalInformation
 from util.logs import Log
 
 # the description of algorithm
-from popupWindow.tabItem.algorithm1 import Algorithm1
-from popupWindow.tabItem.algorithm2 import Algorithm2
-from popupWindow.tabItem.algorithm3 import Algorithm3
+from popupWindow.tabItem.coma import Coma
+from popupWindow.tabItem.commnet_coma import CommnetComa
+from popupWindow.tabItem.qmix import Qmix
+from popupWindow.tabItem.qtran_alt import QtranAlt
+from popupWindow.tabItem.qtran_base import QtranBase
+from popupWindow.tabItem.vdn import Vdn
 
-# the description of map
-from popupWindow.tabItem.moveToBeacon import MoveToBeacon
-from popupWindow.tabItem.collectMineralShards import CollectMineralShards
-from popupWindow.tabItem.findAndDefeatZerglings import FindAndDefeatZerglings
-from popupWindow.tabItem.buildMarines import BuildMarines
-from popupWindow.tabItem.collectMineralsAndGas import CollectMineralsAndGas
-from popupWindow.tabItem.defeatRoaches import DefeatRoaches
-from popupWindow.tabItem.defeatZerglingsAndBanelings import DefeatZerglingsAndBanelings
+from popupWindow.tabItem.mapDescription import MapDescription
 
 # from common.Config import *
 
@@ -50,9 +46,14 @@ class ListDialog(object):
         self.title = title
         self.name = name
 
+        # store old value of map and policy
+        self.type_map = globalInformation.get_value(strings.TYPE_MAP)
+        self.type_policy = globalInformation.get_value(strings.TYPE_POLICY)
+
     def setupUi(self, Dialog, window):
         Dialog.setObjectName("Dialog")
         Dialog.resize(700, 600)
+
         Dialog.setWindowTitle(self.title)
         Dialog.setStyleSheet(GetQssFile.readQss('../resource/qss/listDialog.qss'))
         self.main_layout = QVBoxLayout(Dialog)
@@ -88,9 +89,20 @@ class ListDialog(object):
 
         self.buttonBox.accepted.connect(Dialog.accept)
         self.buttonBox.accepted.connect(window.close)
+        self.buttonBox.accepted.connect(self.button_confirm)
         self.buttonBox.rejected.connect(Dialog.reject)
         self.buttonBox.rejected.connect(window.close)
+        self.buttonBox.rejected.connect(self.button_cancel)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
+
+    def button_confirm(self):
+        pass
+
+    def button_cancel(self):
+        if self.name == strings.TYPE_POLICY:
+            globalInformation.set_value(strings.TYPE_POLICY, self.type_policy)
+        elif self.name == strings.TYPE_MAP:
+            globalInformation.set_value(strings.TYPE_MAP, self.type_map)
 
     def initTab(self):
         # connect tab and item
@@ -110,13 +122,16 @@ class ListDialog(object):
             if i == 0:
                 item.setSelected(True)
             # add item content
-            self.item_widget.addWidget(eval(self.list_item[i]))
+            if self.name == strings.TYPE_POLICY:
+                self.item_widget.addWidget(eval(self.list_item[i]))
+            elif self.name == strings.TYPE_MAP:
+                self.item_widget.addWidget(MapDescription(self.list_str[i]))
 
     def map_choose(self, row):
         message = 'choose {}: {}'.format(self.name, self.list_str[row])
         log = logging.getLogger('StarCraftII')
         log.info(message)
-        Signal.get_signal().emit_signal(message)
+        Signal.get_signal().emit_signal_str(message)
         if self.name == strings.TYPE_POLICY:
             globalInformation.set_value(strings.TYPE_POLICY, self.list_str[row])
         elif self.name == strings.TYPE_MAP:

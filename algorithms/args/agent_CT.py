@@ -83,12 +83,12 @@ class Agent_CT:
     def update_policy(self):
         message = '\tagents update his target'
         self.log.info(message)
-        Signal.get_signal().emit_signal(message)
+        Signal.get_signal().emit_signal_str(message)
 
         if self.policy == self.random_policy:
             message = "change policy to greedy"
             self.log.info(message)
-            Signal.get_signal().emit_signal(message)
+            Signal.get_signal().emit_signal_str(message)
             self.policy = self.greedy_policy
             return
 

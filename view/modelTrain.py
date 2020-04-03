@@ -71,7 +71,7 @@ class ModelTrain(QWidget):
     def modelTrainEvent(self):
         message = 'the setting of model train'
         self.log.info(message)
-        Signal.get_signal().emit_signal(message)
+        Signal.get_signal().emit_signal_str(message)
         self.window = FramelessWindow('model train')
         self.dialog = QDialog()
         description = "a description of model train"

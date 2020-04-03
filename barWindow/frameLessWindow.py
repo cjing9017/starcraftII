@@ -23,12 +23,15 @@ class FramelessWindow(QWidget):
         self.setAttribute(Qt.WA_TranslucentBackground, True)
         # frameless
         self.setWindowFlags(Qt.FramelessWindowHint)
+        # set modality
+        self.setWindowModality(Qt.ApplicationModal)
         # mouse tracking
         self.setMouseTracking(True)
         # set the layout
         layout = QVBoxLayout(self, spacing=0)
         layout.setContentsMargins(
             self.Margins, self.Margins, self.Margins, self.Margins)
+
         # set the title bar
         self.titleBar = TitleBar(dep)
         layout.addWidget(self.titleBar)
@@ -113,9 +116,9 @@ class FramelessWindow(QWidget):
             self.Direction = None
             self.setCursor(Qt.ArrowCursor)
             return
-        if event.buttons() == Qt.LeftButton and self._pressed:
-            self._resizeWidget(pos)
-            return
+        # if event.buttons() == Qt.LeftButton and self._pressed:
+        #     self._resizeWidget(pos)
+        #     return
         if xPos <= self.Margins and yPos <= self.Margins:
             self.Direction = LeftTop
             self.setCursor(Qt.SizeFDiagCursor)

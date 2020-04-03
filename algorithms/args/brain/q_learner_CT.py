@@ -154,14 +154,14 @@ class QLearner:
                 if not os.path.isfile(file):
                     message = "here have not such model"
                     self.log.info(message)
-                    Signal.get_signal().emit_signal(message)
+                    Signal.get_signal().emit_signal_str(message)
 
                     return
         self.Q.load_state_dict(th.load(file))
         self.target_Q.load_state_dict(self.Q.state_dict())
         message = 'sucess load the model in {}'.format(file)
         self.log.info(message)
-        Signal.get_signal().emit_signal(message)
+        Signal.get_signal().emit_signal_str(message)
         return
 
 

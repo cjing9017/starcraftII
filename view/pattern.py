@@ -68,4 +68,4 @@ class Pattern(QWidget):
                 # print(message)
                 self.log.info(message)
                 globalInformation.set_value('pattern', strings.MACHINE_VS_MACHINE)
-            Signal.get_signal().emit_signal(message)
+            Signal.get_signal().emit_signal_str(message)

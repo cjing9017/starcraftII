@@ -2,13 +2,12 @@
 @author: cjing9017
 @date: 2019/05/13
 """
-from PyQt5.QtMultimedia import QMediaPlayer
-from PyQt5.QtWidgets import QWidget, QDockWidget, QDialog
+from PyQt5.QtWidgets import QWidget, QApplication, QDockWidget, QDialog
 from PyQt5.QtWidgets import QHBoxLayout, QVBoxLayout, QFrame
 from PyQt5.QtWidgets import QPushButton, QLabel
-from PyQt5.QtCore import Qt, QSize
 from PyQt5.QtWidgets import QDesktopWidget
-from PyQt5.Qt import QFont, QIcon
+from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QFont
 
 from resource import globalInformation
 from util.getQssFile import GetQssFile
@@ -16,13 +15,12 @@ from popupWindow.viewDialog import ViewDialog
 
 from barWindow.frameLessWindow import FramelessWindow
 from util.signal import Signal
+from resource import strings
 
 from util.logs import Log
 import logging
-import sys
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
 from module.video.VideoRepaly import VideoPlayWindow
+import subprocess
 
 
 class Replay(QWidget):
@@ -76,12 +74,27 @@ class Replay(QWidget):
     def buttonEvent(self):
         sender = self.sender()
         if sender == self.replay:
-            self.video_player()
+            # self.video_player()
+            self.replayEvent()
 
     def replayEvent(self):
         message = 'watch the replay'
         self.log.info(message)
-        Signal.get_signal().emit_signal(message)
+        Signal.get_signal().emit_signal_str(message)
+        p = subprocess.Popen(strings.VIEW_REPLAY, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        # stdout, _ = p.communicate()
+        # Signal.get_signal().emit_signal_str(str(stdout, encoding="utf-8"))
+        # QApplication.processEvents()
+        returncode = p.poll()
+        while returncode is None:
+            line = p.stdout.readline()
+            returncode = p.poll()
+            line = line.strip()
+            send_str = str(line, encoding="utf-8")
+            if send_str != '':
+                Signal.get_signal().emit_signal_str(send_str)
+                self.log.info(send_str)
+        """
         self.window = FramelessWindow('replay')
         self.replayView = QDialog()
         listDialog = ViewDialog()
@@ -93,10 +106,11 @@ class Replay(QWidget):
             QIcon('../resource/drawable/logo.png')
         )
         self.window.show()
+        """
         # self.replayView.setModal(True)
         # self.replayView.show()
 
-    def initFrameLessWindow(self, size, title, icon):
-        self.window.resize(size)
-        self.window.setWindowTitle(title)
-        self.window.setWindowIcon(icon)
+    # def initFrameLessWindow(self, size, title, icon):
+    #     self.window.resize(size)
+    #     self.window.setWindowTitle(title)
+    #     self.window.setWindowIcon(icon)

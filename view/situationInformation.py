@@ -111,7 +111,7 @@ class SituationInformation(QWidget):
     def consumptionEvent(self):
         message = 'situation information: consumption'
         self.log.info(message)
-        Signal.get_signal().emit_signal(message)
+        Signal.get_signal().emit_signal_str(message)
         self.window = FramelessWindow('consumption')
         self.dialog = QDialog()
         description = "a description of consumption"
@@ -130,7 +130,7 @@ class SituationInformation(QWidget):
     def scoreEvent(self):
         message = 'situation information: score'
         self.log.info(message)
-        Signal.get_signal().emit_signal(message)
+        Signal.get_signal().emit_signal_str(message)
         self.window = FramelessWindow('consumption')
         self.dialog = QDialog()
         description = "a description of score"
@@ -149,7 +149,7 @@ class SituationInformation(QWidget):
     def resourceEvent(self):
         message = 'situation information: resource'
         self.log.info(message)
-        Signal.get_signal().emit_signal(message)
+        Signal.get_signal().emit_signal_str(message)
         self.window = FramelessWindow('resource')
         self.dialog = QDialog()
         description = "a description of resource"
@@ -168,7 +168,7 @@ class SituationInformation(QWidget):
     def outputEvent(self):
         message = 'situation information: output'
         self.log.info(message)
-        Signal.get_signal().emit_signal(message)
+        Signal.get_signal().emit_signal_str(message)
         self.window = FramelessWindow('output')
         self.dialog = QDialog()
         description = "a description of output"

@@ -67,3 +67,11 @@ QPushButton#map:pressed {
     border-image: url('../resource/drawable/map_down.png');
 }
 
+QLCDNumber {
+    border: 2px solid black;
+    color: black;
+    border-radius: 4px;
+    font-weight: 20px;
+    font-size: 20px;
+}
+

@@ -18,7 +18,7 @@ class MARL(object):
 
     def test(self, env, path, runner, best_score=0):
         self.log.info('start test')
-        Signal.get_signal().emit_signal('start test')
+        Signal.get_signal().emit_signal_str('start test')
         super(MARL, self).__init__()
 
     def test(self, env, path, runner, test_only=False,  best_score=0):
@@ -63,7 +63,7 @@ class MARL(object):
 
             message = "Total reward in episode {} = {}".format(e, episode_reward)
             self.log.info(message)
-            Signal.get_signal().emit_signal(message)
+            Signal.get_signal().emit_signal_str(message)
             print("Total reward in test episode {} = {}".format(e, episode_reward))
             scores.append(episode_reward)
         avg_score = sum(scores) / n_episodes
@@ -94,7 +94,7 @@ class MARL(object):
         #  'episode_limit': 120}
         message = "env_info: {}".format(env_info)
         self.log.info(message)
-        Signal.get_signal().emit_signal(message)
+        Signal.get_signal().emit_signal_str(message)
 
         n_actions = env_info["n_actions"]
         n_agents = env_info["n_agents"]
@@ -148,7 +148,7 @@ class MARL(object):
 
             message = "Total reward in episode {} = {}".format(e, episode_reward)
             self.log.info(message)
-            Signal.get_signal().emit_signal(message)
+            Signal.get_signal().emit_signal_str(message)
             print("Total reward in train episode {} = {}".format(e, episode_reward))
             t_env += step
             scores.append(episode_reward)

@@ -5,10 +5,13 @@ import numpy as np
 
 import logging
 from util.signal import Signal
+from resource import globalInformation
+from resource import strings
 
 
 class AlgorithmAgent(QThread):
     trigger = pyqtSignal()
+    stop = False
 
     def __int__(self):
         super(AlgorithmAgent, self).__init__()
@@ -17,7 +20,7 @@ class AlgorithmAgent(QThread):
         self.log = logging.getLogger('StarCraftII')
         message = "start rl algorithm"
         self.log.info(message)
-        Signal.get_signal().emit_signal(message)
+        Signal.get_signal().emit_signal_str(message)
         env = StarCraft2Env(
             map_name="3m",
             window_size_x=1418,
@@ -30,21 +33,28 @@ class AlgorithmAgent(QThread):
         n_agents = env_info["n_agents"]
         message = "n_actions : {}".format(n_actions)
         self.log.info(message)
-        Signal.get_signal().emit_signal(message)
+        Signal.get_signal().emit_signal_str(message)
         message = "n_agents : {}".format(n_agents)
         self.log.info(message)
-        Signal.get_signal().emit_signal(message)
+        Signal.get_signal().emit_signal_str(message)
 
-        n_episodes = 10
+        n_episodes = 100
 
         for e in range(n_episodes):
             env.reset()
             terminated = False
             episode_reward = 0
 
+            if self.stop:
+                break
+
             while not terminated:
                 obs = env.get_obs()
                 state = env.get_state()
+
+                if globalInformation.get_value(strings.IS_STOP):
+                    self.stop = True
+                    break
 
                 actions = []
                 for agent_id in range(n_agents):
@@ -58,9 +68,10 @@ class AlgorithmAgent(QThread):
 
             message = "Total reward in episode {} = {}".format(e, episode_reward)
             self.log.info(message)
-            Signal.get_signal().emit_signal(message)
+            Signal.get_signal().emit_signal_str(message)
 
         env.close()
+        Signal.get_signal().emit_signal_gameover()
 
 
 if __name__ == "__main__":

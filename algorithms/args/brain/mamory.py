@@ -151,11 +151,11 @@ class Memmory:
     def show_memory(self):
         message = "agent {}".format(self.index)
         self.log.info(message)
-        Signal.get_signal().emit_signal(message)
+        Signal.get_signal().emit_signal_str(message)
         for _, _, t in self.trajectories.queue:
             message = "len: {}; score: ".format(len(t['observation']), t['score'])
             self.log.info(message)
-            Signal.get_signal().emit_signal(message)
+            Signal.get_signal().emit_signal_str(message)
 
     def get_current_trajectory(self):
         batch = {
@@ -337,13 +337,13 @@ class Leader_Memmory:
     def show_memory(self):
         message = "agent ".format(self.index)
         self.log.info(message)
-        Signal.get_signal().emit_signal(message)
+        Signal.get_signal().emit_signal_str(message)
 
         if self.PQ:
             for _, _, t in self.trajectories.queue:
                 message = "len: {}; score: {}".format(len(t['observation']), t['score'])
                 self.log.info(message)
-                Signal.get_signal().emit_signal(message)
+                Signal.get_signal().emit_signal_str(message)
 
     def get_current_trajectory(self):
         if self.current_trajectory['action_onehot'] == []:

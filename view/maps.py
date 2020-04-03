@@ -74,6 +74,38 @@ class Maps(QWidget):
         # initialization
         self.initUI()
 
+        self.list_str = [
+            strings.MAP_MOVE_TO_BEACON,
+            strings.MAP_COLLECT_MINERAL_SHARDS,
+            strings.MAP_FIND_AND_DEFEAT_ZERGLINGS,
+            strings.MAP_DEFEAT_ROACHES,
+            strings.MAP_DEFEAT_ZERGLINGS_AND_BANELINGS,
+            strings.MAP_COLLECT_MINERALS_AND_GAS,
+            strings.MAP_BUILD_MARINES,
+            strings.MAP_2C_VS_64ZG,
+            strings.MAP_2M_VS_1Z,
+            strings.MAP_2S3Z,
+            strings.MAP_2S_VS_1SC,
+            strings.MAP_3M,
+            strings.MAP_3S5Z,
+            strings.MAP_3S5Z_VS_3S6Z,
+            strings.MAP_3S_VS_3Z,
+            strings.MAP_3S_VS_4Z,
+            strings.MAP_3S_VS_5Z,
+            strings.MAP_5M_VS_6M,
+            strings.MAP_6H_VS_8Z,
+            strings.MAP_8M,
+            strings.MAP_8M_VS_9M,
+            strings.MAP_10M_VS_11M,
+            strings.MAP_25M,
+            strings.MAP_27M_VS_30M,
+            strings.MAP_BANE_VS_BANE,
+            strings.MAP_CORRIDOR,
+            strings.MAP_MMM,
+            strings.MAP_MMM2,
+            strings.MAP_SO_MANY_BANELINGS
+        ]
+
     def initUI(self):
         self.chooseMap.clicked.connect(self.buttonEvent)
         self.mapDesign.clicked.connect(self.buttonEvent)
@@ -89,31 +121,14 @@ class Maps(QWidget):
         message = 'choose new map'
         log = logging.getLogger('StarCraftII')
         log.info(message)
-        Signal.get_signal().emit_signal(message)
+        Signal.get_signal().emit_signal_str(message)
         self.window = FramelessWindow('choose map')
         self.dialog = QDialog()
         # tab item name
-        list_str = [
-            strings.MAP_MOVE_TO_BEACON,
-            strings.MAP_COLLECT_MINERAL_SHARDS,
-            strings.MAP_FIND_AND_DEFEAT_ZERGLINGS,
-            strings.MAP_DEFEAT_ROACHES,
-            strings.MAP_DEFEAT_ZERGLINGS_AND_BANELINGS,
-            strings.MAP_COLLECT_MINERALS_AND_GAS,
-            strings.MAP_BUILD_MARINES
-        ]
-        # item content
-        list_item = [
-            strings.CLASS_MAP_MOVE_TO_BEACON,
-            strings.CLASS_MAP_COLLECT_MINERAL_SHARDS,
-            strings.CLASS_MAP_FIND_AND_DEFEAT_ZERGLINGS,
-            strings.CLASS_MAP_DEFEAT_ROACHES,
-            strings.CLASS_MAP_DEFEAT_ZERGLINGS_AND_BANELINGS,
-            strings.CLASS_MAP_COLLECT_MINERALS_AND_GAS,
-            strings.CLASS_MAP_BUILD_MARINES
-        ]
+        list_map = self.list_str if globalInformation.get_value(strings.TYPE_POLICY) is None \
+            else globalInformation.get_value(strings.ALGORITHM_MAP)[globalInformation.get_value(strings.TYPE_POLICY)]
         # title name
-        self.listDialog = ListDialog(list_str, list_item, strings.MAPS_TITLE, strings.TYPE_MAP)
+        self.listDialog = ListDialog(list_map, None, strings.MAPS_TITLE, strings.TYPE_MAP)
         self.listDialog.setupUi(self.dialog, self.window)
         self.window.setWidget(self.dialog)
         self.initFrameLessWindow(
@@ -132,7 +147,7 @@ class Maps(QWidget):
         message = 'open the map designer to customize the map'
         log = logging.getLogger('StarCraftII')
         log.info(message)
-        Signal.get_signal().emit_signal(message)
+        Signal.get_signal().emit_signal_str(message)
         # os.system(strings.SCMDRAFT)
         subprocess.Popen(strings.SCMDRAFT)
 

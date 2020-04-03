@@ -135,7 +135,7 @@ class MainWindow(QWidget):
         message = self.list_str[self.list_widget.currentRow()]
         log = logging.getLogger('StarCraftII')
         log.info('item change: {}'.format(message))
-        Signal.get_signal().emit_signal('item change: {}'.format(message))
+        Signal.get_signal().emit_signal_str('item change: {}'.format(message))
 
 
 def main():
